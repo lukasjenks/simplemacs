@@ -38,16 +38,19 @@
 (add-to-list 'package-archives
        '("melpa" . "http://melpa.milkbox.net/packages/"))
 
-;; Autocomplete go code
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
+;; Enable smooth scrolling (default emacs scrolling sucks)
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
 
-(add-hook 'completion-at-point-functions 'go-complete-at-point)
+;; Autocomplete go code
+;(require 'go-autocomplete)
+;(require 'auto-complete-config)
+;(ac-config-default)
+;(add-hook 'completion-at-point-functions 'go-complete-at-point)
 
 ;; Nick's CMPT 315 addons
-;(setq gofmt-command "goimports")
-;(add-hook 'before-save-hook 'gofmt-before-save)
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 
 ;; Custom-set-variables and custom-set faces are both
@@ -66,7 +69,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
+    (smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

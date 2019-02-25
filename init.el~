@@ -39,11 +39,14 @@
        '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 ;; Autocomplete go code
-(add-hook 'completion-at-point-functions 'go-complete-at-point)
+;(require 'go-autocomplete)
+;(require 'auto-complete-config)
+;(ac-config-default)
+;(add-hook 'completion-at-point-functions 'go-complete-at-point)
 
 ;; Nick's CMPT 315 addons
-;(setq gofmt-command "goimports")
-;(add-hook 'before-save-hook 'gofmt-before-save)
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
 
 
 ;; Custom-set-variables and custom-set faces are both
@@ -62,7 +65,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
+    (go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
