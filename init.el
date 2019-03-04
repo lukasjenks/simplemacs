@@ -61,6 +61,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+
+ ;; Only enable theme if in GUI mode
  (when (display-graphic-p)
  '(custom-enabled-themes (quote (doom-dracula))))
  '(custom-safe-themes
