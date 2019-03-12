@@ -25,6 +25,12 @@
 ;; I have kept it here as an example.
 (set-face-attribute 'default nil :height 130)
 
+;; Make cursor a normal ide cursor
+(setq-default cursor-type 'bar)
+
+;; Set cursor color
+(set-cursor-color "#d742f4")
+
 ;; Make system copy and paste work with emacs copy and paste
 ;; (Necessary to be able to copy and paste in and out of emacs from
 ;; other applications)
