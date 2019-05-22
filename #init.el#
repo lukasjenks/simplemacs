@@ -12,10 +12,10 @@
 (setq c-basic-offset 4)
 
 ;; Enable having line numbers appear on the LHS of the buffer
-;(global-linum-mode t)
-;(global-nlinum-relative-mode t)
-;;(setq linum-format "%5d")
-(global-display-line-numbers-mode t)
+(global-linum-mode t)
+;;(global-nlinum-relative-mode t)
+(setq linum-format "%5d")
+;;(global-display-line-numbers-mode t)
 
 ;; Manually set theme path and load theme example
 ;; (add-to-list 'custom-theme-load-path "/home/lukas/.emacs.d/themes/")
@@ -85,4 +85,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Consolas" :foundry "SRC" :slant normal :weight normal :height 110 :width normal)))))
+ '(default ((t (:family "Hack" :foundry "SRC" :slant normal :weight normal :height 110 :width normal)))))
