@@ -1,20 +1,36 @@
 ;; LUKAS' EMACS CONFIG
 
+;; ----------------------------------------------------------------
 ;; This must come before configurations of
 ;; installed packages.  Don't delete this line.
 (package-initialize)
+;; ----------------------------------------------------------------
 
-;; Enable mouse interactivity (scrolling, etc)
+;; ----------------------------------------------------------------
+;; Enable mouse interactivity in terminal mode (scrolling, etc)
 (xterm-mouse-mode 1)
+;; ----------------------------------------------------------------
 
+;; ----------------------------------------------------------------
 ;; Set default tab width to 4 unless specified otherwise in a language mode
 ;; specific hook
 (setq c-basic-offset 4)
+;; ----------------------------------------------------------------
 
 ;; Enable having line numbers appear on the LHS of the buffer
-;(global-linum-mode t)
-;(global-nlinum-relative-mode t)
-;;(setq linum-format "%5d")
+;; Standard line numbers, with a thin sidebar. Unfortunately
+;; doesn't highlight the line number of the line your cursor is
+;; on like global-display-line-numbers-mode.
+;; (global-linum-mode t)
+
+;; Manually set width of line number sidebar
+;; (setq linum-format "%5d")
+
+;; This line number mode is broken on windows
+;; (global-nlinum-relative-mode t)
+
+;; This line number mode is good, although the sidebar it creates
+;; is too large
 (global-display-line-numbers-mode t)
 
 ;; Manually set theme path and load theme example

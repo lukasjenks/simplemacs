@@ -8,9 +8,11 @@ To do this, execute the following in the terminal of your choice:
 
 `cd ~`
 
-`mv .emacs.d oldemacsconfig`
+`mv .emacs.d old.emacs.d`
 
-`mv .emacs oldemacsconfig`
+`mv .emacs old.emacs`
+
+`mv init.el old.init.el`
 
 ### Replacing your configuration
 
