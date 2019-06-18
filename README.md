@@ -12,8 +12,6 @@ To do this, execute the following in the terminal of your choice:
 
 `mv .emacs old.emacs`
 
-`mv init.el old.init.el`
-
 ### Replacing your configuration
 
 `cd ~`
