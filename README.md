@@ -4,7 +4,7 @@
 
 ### Optional
 Backup your ~/.emacs.d and ~/.emacs file, if you want to keep your current emacs configuration.
-To do this, execute the following in the terminal of your choice:
+To do this, execute the following in the terminal:
 
 `cd ~`
 
