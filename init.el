@@ -7,6 +7,12 @@
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
+;; Set the value of the initial start message to nil such that the
+;; default buffer message is suppressed.
+(setq initial-scratch-message nil)
+;; ----------------------------------------------------------------
+
+;; ----------------------------------------------------------------
 ;; Enable mouse interactivity in terminal mode (scrolling, etc)
 (xterm-mouse-mode 1)
 ;; ----------------------------------------------------------------
@@ -94,7 +100,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
+    (evil ac-c-headers ac-capf ac-html ac-html-bootstrap ac-html-csswatcher nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
