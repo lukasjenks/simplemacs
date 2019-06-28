@@ -8,8 +8,14 @@
 
 ;; ----------------------------------------------------------------
 ;; Set the value of the initial start message to nil such that the
-;; default buffer message is suppressed.
+;; default buffer message i.e. "This buffer is for..." is suppressed.
 (setq initial-scratch-message nil)
+;; ----------------------------------------------------------------
+
+;; ----------------------------------------------------------------
+;; Set the default mode for a new emacs buffer to be text-mode
+;; rather than elisp interaction doc
+(setq initial-major-mode 'text-mode)
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -74,10 +80,10 @@
 (smooth-scrolling-mode 1)
 
 ;; Autocomplete go code
-;(require 'go-autocomplete)
-;(require 'auto-complete-config)
-;(ac-config-default)
-;(add-hook 'completion-at-point-functions 'go-complete-at-point)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+(add-hook 'completion-at-point-functions 'go-complete-at-point)
 
 ;; Nick's CMPT 315 addons
 (setq gofmt-command "goimports")
@@ -92,6 +98,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(custom-enabled-themes (quote (doom-dracula)))
  '(custom-safe-themes
    (quote
