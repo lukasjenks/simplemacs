@@ -1,9 +1,14 @@
-;; LUKAS' EMACS CONFIG
-
+;-----------------------------------------------------------------
+;LUKAS' EMACS CONFIG
+;-----------------------------------------------------------------
 ;; ----------------------------------------------------------------
-;; This must come before configurations of
-;; installed packages.  Don't delete this line.
-(package-initialize)
+;; Initialize MELPA package repository
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  ;(package-refresh-contents)
+)
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -34,17 +39,13 @@
 ;; Standard line numbers, with a thin sidebar. Unfortunately
 ;; doesn't highlight the line number of the line your cursor is
 ;; on like global-display-line-numbers-mode.
-;; (global-linum-mode t)
-
-;; Manually set width of line number sidebar
-;; (setq linum-format "%5d")
-
-;; This line number mode is broken on windows
-;; (global-nlinum-relative-mode t)
 
 ;; This line number mode is good, although the sidebar it creates
-;; is too large
-(global-display-line-numbers-mode t)
+;; cuts off part of the line number...
+(global-linum-mode t)
+(setq linum-format " %d ")
+(require 'hlinum)
+(hlinum-activate)
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -85,13 +86,6 @@
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
-;; Add melpa packages to package-list-packages
-(require 'package)
-(add-to-list 'package-archives
-       '("melpa" . "http://melpa.milkbox.net/packages/")  t)
-;; ----------------------------------------------------------------
-
-;; ----------------------------------------------------------------
 ;; Enable smooth scrolling (default emacs scrolling sucks)
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
@@ -99,10 +93,10 @@
 
 ;; ----------------------------------------------------------------
 ;; Autocomplete go code
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
-(add-hook 'completion-at-point-functions 'go-complete-at-point)
+;(require 'go-autocomplete)
+;(require 'auto-complete-config)
+;(ac-config-default)
+;(add-hook 'completion-at-point-functions 'go-complete-at-point)
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -120,7 +114,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(tab-stop-list (quote (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
  '(custom-enabled-themes (quote (doom-dracula)))
  '(custom-safe-themes
    (quote
@@ -129,7 +122,10 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (evil ac-c-headers ac-capf ac-html ac-html-bootstrap ac-html-csswatcher nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree))))
+    (yalinum nlinum-hl hlinum evil nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree)))
+ '(tab-stop-list
+   (quote
+    (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
