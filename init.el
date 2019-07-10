@@ -43,7 +43,7 @@
 ;; This line number mode is good, although the sidebar it creates
 ;; cuts off part of the line number...
 (global-linum-mode t)
-(setq linum-format " %d ")
+(setq linum-format "%4d")
 (require 'hlinum)
 (hlinum-activate)
 ;; ----------------------------------------------------------------
