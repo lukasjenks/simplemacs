@@ -8,7 +8,8 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  ;(package-refresh-contents)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (package-initialize)
 )
 ;; ----------------------------------------------------------------
 
@@ -37,14 +38,10 @@
 
 ;; ----------------------------------------------------------------
 ;; Enable having line numbers appear on the LHS of the buffer
-;; Standard line numbers, with a thin sidebar. Unfortunately
-;; doesn't highlight the line number of the line your cursor is
-;; on like global-display-line-numbers-mode.
+;; and highlight the number of your current line number
 
-;; This line number mode is good, although the sidebar it creates
-;; cuts off part of the line number...
 (global-linum-mode t)
-(setq linum-format "%4d")
+(setq linum-format "  %4d  ")
 (require 'hlinum)
 (hlinum-activate)
 ;; ----------------------------------------------------------------
@@ -123,7 +120,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (yalinum nlinum-hl hlinum evil nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree)))
+    (auto-complete yalinum nlinum-hl hlinum evil nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree)))
  '(tab-stop-list
    (quote
     (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))))
