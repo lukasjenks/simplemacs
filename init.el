@@ -41,7 +41,6 @@
 ;; and highlight the number of your current line number
 
 (global-linum-mode t)
-(setq linum-format "  %4d")
 (require 'hlinum)
 (hlinum-activate)
 ;; ----------------------------------------------------------------
@@ -55,10 +54,12 @@
 ;; ----------------------------------------------------------------
 ;; Set font size:
 ;; 10pt = 100, 12pt = 120, etc.
-;; Here, I set the font size to 13pt.
-;; Note: This actually is overwritten by custom-set-faces later.
-;; I have kept it here as an example.
-(set-face-attribute 'default nil :height 130)
+;; Here, I set the font size to 12pt/
+(set-face-attribute 'default nil
+                    :family "consolas"
+                    :height 120
+                    :weight 'normal
+                    :width 'normal)
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -102,6 +103,19 @@
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook 'gofmt-before-save)
 ;; ----------------------------------------------------------------
+;; Script to fix line number bullshit
+;; This script is set for a `text-scale-mode-step` of `1.04`
+;(require 'linum)
+;(defun linum-update-window-scale-fix (win)
+ ; "fix linum for scaled text"
+ ; (set-window-margins win
+ ;         (ceiling (* (if (boundp 'text-scale-mode-step)
+ ;                 (expt text-scale-mode-step
+ ;                   text-scale-mode-amount) 1)
+  ;            (if (car (window-margins))
+ ;                 (car (window-margins)) 1)
+ ;             ))))
+;(advice-add #'linum-update-window :after #'linum-update-window-scale-fix)
 
 ;; ----------------------------------------------------------------
 ;; Custom-set-variables and custom-set faces are both
@@ -124,11 +138,4 @@
  '(tab-stop-list
    (quote
     (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "droid sans mono" :foundry "SRC" :slant normal :weight normal :height 110 :width normal)))))
 ;; ----------------------------------------------------------------
