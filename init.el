@@ -103,19 +103,8 @@
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook 'gofmt-before-save)
 ;; ----------------------------------------------------------------
-;; Script to fix line number bullshit
-;; This script is set for a `text-scale-mode-step` of `1.04`
-;(require 'linum)
-;(defun linum-update-window-scale-fix (win)
- ; "fix linum for scaled text"
- ; (set-window-margins win
- ;         (ceiling (* (if (boundp 'text-scale-mode-step)
- ;                 (expt text-scale-mode-step
- ;                   text-scale-mode-amount) 1)
-  ;            (if (car (window-margins))
- ;                 (car (window-margins)) 1)
- ;             ))))
-;(advice-add #'linum-update-window :after #'linum-update-window-scale-fix)
+;; Prevent emacs from creating garbage lockfiles
+(setq create-lockfiles nil)
 
 ;; ----------------------------------------------------------------
 ;; Custom-set-variables and custom-set faces are both
@@ -129,7 +118,7 @@
  '(custom-enabled-themes (quote (night-owl)))
  '(custom-safe-themes
    (quote
-    ("f391a94155d991d13aa857d56db98924136b98357640c8239b0e8eb6aca5436b" "24fc62afe2e5f0609e436aa2427b396adf9a958a8fa660edbaab5fb13c08aae6" "55ff1b187304abeb43eb61ff3151deee8d64e749c5b622981ad0f6399defce06" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" default)))
+    ("8f461689cd31614cd5a1c71a25ecd4ab0381937fc99808e9b9545eacbc2ebd53" "f391a94155d991d13aa857d56db98924136b98357640c8239b0e8eb6aca5436b" "24fc62afe2e5f0609e436aa2427b396adf9a958a8fa660edbaab5fb13c08aae6" "55ff1b187304abeb43eb61ff3151deee8d64e749c5b622981ad0f6399defce06" "f0dc4ddca147f3c7b1c7397141b888562a48d9888f1595d69572db73be99a024" default)))
  '(fci-rule-color "#6272a4")
  '(inhibit-startup-buffer-menu t)
  '(inhibit-startup-screen t)
@@ -138,7 +127,7 @@
  '(jdee-db-spec-breakpoint-face-colors (cons "#1E2029" "#565761"))
  '(package-selected-packages
    (quote
-    (night-owl-theme arc-dark-theme abyss-theme auto-complete yalinum nlinum-hl hlinum evil nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree)))
+    (centaur-tabs ac-c-headers ac-html night-owl-theme arc-dark-theme abyss-theme auto-complete yalinum nlinum-hl hlinum evil nlinum-relative smooth-scrolling go-complete go-mode restart-emacs org-journal helm-youtube chess doom-themes restclient neotree)))
  '(tab-stop-list
    (quote
     (4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100 104 108 112 116 120)))
