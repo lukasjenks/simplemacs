@@ -39,7 +39,6 @@
 ;; ----------------------------------------------------------------
 ;; Enable having line numbers appear on the LHS of the buffer
 ;; and highlight the number of your current line number
-
 (global-linum-mode t)
 (require 'hlinum)
 (hlinum-activate)
@@ -52,7 +51,7 @@
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
-;; Set font size:
+;; Set font attributes:
 ;; 10pt = 100, 12pt = 120, etc.
 ;; Here, I set the font size to 12pt/
 (set-face-attribute 'default nil
@@ -63,7 +62,7 @@
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
-;; Make cursor a normal bar cursor instead of box
+;; Make cursor a normal bar cursor instead of a stupid box
 (setq-default cursor-type 'bar)
 ;; ----------------------------------------------------------------
 
@@ -103,8 +102,11 @@
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook 'gofmt-before-save)
 ;; ----------------------------------------------------------------
+
+;; ----------------------------------------------------------------
 ;; Prevent emacs from creating garbage lockfiles
 (setq create-lockfiles nil)
+;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
 ;; Custom-set-variables and custom-set faces are both
@@ -160,3 +162,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+;; ----------------------------------------------------------------
