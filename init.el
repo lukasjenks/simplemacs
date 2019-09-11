@@ -174,14 +174,10 @@
 
 ;; ----------------------------------------------------------------
 ;; Enable slime and set default lisp
+(cond
+ ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
+ ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
 
-;; Uncomment following line if on Windows
-(load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el"))
-
-;; Uncomment following line if on Linux
-;; (load (expand-file-name "~/quicklisp/slime-helper.el"))
-
-;; Replace "sbcl" with your lisp implementation
 (setq inferior-lisp-program "sbcl")
 ;; ----------------------------------------------------------------
 
