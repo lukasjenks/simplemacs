@@ -1,4 +1,4 @@
-# Lukas' emacs config
+# Lukas' Emacs Configuration
 
 ## Installation
 
