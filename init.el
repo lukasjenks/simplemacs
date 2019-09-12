@@ -75,12 +75,23 @@
 ;; ----------------------------------------------------------------
 ;; Set font attributes:
 ;; 10pt = 100, 12pt = 120, etc.
-;; Here, I set the font size to 12pt/
-(set-face-attribute 'default nil
+;; Here, I set the font size to 12p.
+;; I also set font to consolas if I'm running in Windows,
+;; as Hack seems to break on Windows. Currently looking into this.
+
+(cond
+ ((string-equal system-type "windows-nt")
+  (set-face-attribute 'default nil
                     :family "consolas"
                     :height 120
                     :weight 'normal
-                    :width 'normal)
+                    :width 'normal))
+ ((string-equal system-type "gnu/linux")
+  (set-face-attribute 'default nil
+                    :family "Hack"
+                    :height 120
+                    :weight 'normal
+                    :width 'normal))
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -178,7 +189,7 @@
  ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
  ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
 
-(setq inferior-lisp-program "sbcl")
+(setq inferior-lisp-program "alisp")
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
