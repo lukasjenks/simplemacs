@@ -78,7 +78,6 @@
 ;; Here, I set the font size to 12p.
 ;; I also set font to consolas if I'm running in Windows,
 ;; as Hack seems to break on Windows. Currently looking into this.
-
 (cond
  ((string-equal system-type "windows-nt")
   (set-face-attribute 'default nil
@@ -91,7 +90,7 @@
                     :family "Hack"
                     :height 120
                     :weight 'normal
-                    :width 'normal))
+                    :width 'normal)))
 ;; ----------------------------------------------------------------
 
 ;; ----------------------------------------------------------------
@@ -188,7 +187,6 @@
 (cond
  ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
  ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
-
 (setq inferior-lisp-program "alisp")
 ;; ----------------------------------------------------------------
 
