@@ -107,11 +107,11 @@
    #+END_SRC
 * Other external packages
 ** Rainbow delimiters
-   #+BEGIN_SRC
+   #+BEGIN_SRC emacs-lisp
    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
    #+END_SRC
 ** Centaur tabs
-   #+BEGIN_SRC
+   #+BEGIN_SRC emacs-lisp
    (require 'centaur-tabs)
    (centaur-tabs-mode t)
    ;; (global-set-key (kbd "C-7") 'centaur-tabs-add-tab)

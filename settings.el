@@ -66,6 +66,16 @@
 (setq-default cursor-type 'bar)
 (set-cursor-color "#d742f4")
 
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+
+(require 'centaur-tabs)
+(centaur-tabs-mode t)
+;; (global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
+;; (global-set-key (kbd "C-8") 'centaur-tabs-backward)
+;; (global-set-key (kbd "C-9") 'centaur-tabs-forward)
+(setq centaur-tabs-style "alternate")
+(setq centaur-tabs-set-bar 'over)
+
 (global-set-key [f9] 'treemacs)
 
 (cond
