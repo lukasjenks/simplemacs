@@ -103,6 +103,10 @@
  ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
 (setq inferior-lisp-program "alisp")
 
+;; Enable org-mode bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 ;; Suppress line numbers in various modes
 (add-hook 'treemacs-mode-hook (lambda() (linum-mode -1)))
 (add-hook 'tetris-mode-hook (lambda() (linum-mode -1)))
@@ -121,10 +125,15 @@
     ("a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" default)))
  '(package-selected-packages
    (quote
-    (slime org centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters))))
+    (org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; For when I get around to converting to org file
+
+;; (org-babel-load-file (expand-file-name "settings.org"
+;;                    user-emacs-directory))
