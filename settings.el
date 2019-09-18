@@ -87,8 +87,8 @@
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
-(ac-config-default)
-(global-auto-complete-mode t)
-(ac-linum-workaround)
+;; (ac-config-default)
+;; (global-auto-complete-mode t)
+;; (ac-linum-workaround)
 
 (setq x-select-enable-clipboard t)

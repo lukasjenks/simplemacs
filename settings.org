@@ -38,7 +38,7 @@
    #+BEGIN_SRC emacs-lisp
    (cond
    ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
-   ((string-equal system-type "gnu/linux") (global-display-line-number-mode t)))
+   ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
    #+END_SRC
 ** Enable hlinum
    #+BEGIN_SRC emacs-lisp
