@@ -34,23 +34,23 @@
             (kill-buffer buffer)))))   
    #+END_SRC
 * Configure line number functionality
-** Enable linum-mode globally
+** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
    (cond
-   ((string-equal system-type "windows-nt") (global-linum-mode t))
-   ((string-equal system-type "gnu/linux") (global-linum-mode t)))
+   ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
+   ((string-equal system-type "gnu/linux") (global-display-line-number-mode t)))
    #+END_SRC
 ** Enable hlinum
    #+BEGIN_SRC emacs-lisp
-   (require 'hlinum)
-   (hlinum-activate)
+   ;; (require 'hlinum)
+   ;; (hlinum-activate)
    #+END_SRC
-** Supress linum-mode in various modes
+** Supress display-line-numbers-mode in various minor modes
    #+BEGIN_SRC emacs-lisp
-   (add-hook 'treemacs-mode-hook (lambda() (linum-mode -1)))
-   (add-hook 'tetris-mode-hook (lambda() (linum-mode -1)))
-   (add-hook 'snake-mode-hook (lambda() (linum-mode -1)))
-   (add-hook 'doctor-mode-hook (lambda() (linum-mode -1)))
+   (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
+   (add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode-mode -1)))
+   (add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
+   (add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
    #+END_SRC
 * Terminal specific settings
 ** Enable mouse interactivity in terminal mode
@@ -62,6 +62,7 @@
    #+BEGIN_SRC emacs-lisp
    (setq-default indent-tabs-mode nil)
    (setq-default tab-width 4)
+   (setq c-basic-offset 4)
    (setq tab-stop-list (number-sequence 4 200 4))
    #+END_SRC
 * Scrolling settings
@@ -138,9 +139,9 @@
    #+END_SRC
 ** Auto complete
    #+BEGIN_SRC emacs-lisp
-   (ac-config-default)
-   (global-auto-complete-mode t)
-   (ac-linum-workaround)
+   ;; (ac-config-default)
+   ;; (global-auto-complete-mode t)
+   ;; (ac-linum-workaround)
    #+END_SRC
 * Copy/paste settings
 ** Enable copy/paste in/out of emacs

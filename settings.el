@@ -23,21 +23,22 @@
          (kill-buffer buffer)))))
 
 (cond
-((string-equal system-type "windows-nt") (global-linum-mode t))
-((string-equal system-type "gnu/linux") (global-linum-mode t)))
+((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
+((string-equal system-type "gnu/linux") (global-display-line-number-mode t)))
 
-(require 'hlinum)
-(hlinum-activate)
+;; (require 'hlinum)
+;; (hlinum-activate)
 
-(add-hook 'treemacs-mode-hook (lambda() (linum-mode -1)))
-(add-hook 'tetris-mode-hook (lambda() (linum-mode -1)))
-(add-hook 'snake-mode-hook (lambda() (linum-mode -1)))
-(add-hook 'doctor-mode-hook (lambda() (linum-mode -1)))
+(add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
+(add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode-mode -1)))
+(add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
+(add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
 
 (xterm-mouse-mode t)
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq c-basic-offset 4)
 (setq tab-stop-list (number-sequence 4 200 4))
 
 (setq scroll-conservatively 101)

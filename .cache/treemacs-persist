@@ -1,8 +1,3 @@
 * Default
 ** camms-portal
- - path :: ~/Documents/Work/camms-portal
-** emacs-config
- - path :: ~/.emacs.d
-* Documents
-** my-docs
- - path :: ~/Documents
+ - path :: c:/Users/ljenks/Documents/camms-portal

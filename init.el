@@ -9,7 +9,7 @@
  '(custom-enabled-themes (quote (monokai)))
  '(custom-safe-themes
    (quote
-    ("a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" default)))
+    ("db295e289b0d8f3dc260c902715a02beb2fcc97d538832dc6ba6415b953b4dfc" "a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" default)))
  '(package-selected-packages
    (quote
     (auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters))))
