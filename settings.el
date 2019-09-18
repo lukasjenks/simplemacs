@@ -58,8 +58,8 @@
                  :width 'normal))
 ((string-equal system-type "gnu/linux")
 (set-face-attribute 'default nil
-                 :family "Hack"
-                 :height 110
+                 :family "SourceCodePro-Regular"
+                 :height 115
                  :weight 'normal
                  :width 'normal)))
 
@@ -85,5 +85,9 @@
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(ac-config-default)
+(global-auto-complete-mode t)
+(ac-linum-workaround)
 
 (setq x-select-enable-clipboard t)

@@ -12,7 +12,7 @@
     ("a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" default)))
  '(package-selected-packages
    (quote
-    (org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters))))
+    (auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

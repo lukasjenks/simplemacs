@@ -95,8 +95,8 @@
                     :width 'normal))
    ((string-equal system-type "gnu/linux")
    (set-face-attribute 'default nil
-                    :family "Hack"
-                    :height 110
+                    :family "SourceCodePro-Regular"
+                    :height 115
                     :weight 'normal
                     :width 'normal)))
    #+END_SRC
@@ -135,6 +135,12 @@
    #+BEGIN_SRC emacs-lisp
    (require 'org-bullets)
    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+   #+END_SRC
+** Auto complete
+   #+BEGIN_SRC emacs-lisp
+   (ac-config-default)
+   (global-auto-complete-mode t)
+   (ac-linum-workaround)
    #+END_SRC
 * Copy/paste settings
 ** Enable copy/paste in/out of emacs
