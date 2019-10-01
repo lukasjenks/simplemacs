@@ -43,6 +43,7 @@
 
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 4)
+(setq c-basic-offset 4)
 (setq backward-delete-char-untabify-method 'hungry)
 
 (setq scroll-conservatively 101)
@@ -115,6 +116,13 @@
                 ;; Insert latest tldr newsletter HTML webpage into the buffer
                 (insert
                     (shell-command-to-string (concat curl-cmd (format-time-string "%Y%m%d"))))
+
+		;; Replace rootless links with proper links 
+		(let ((case-fold-search t)) ; or nil
+            (goto-char (point-min))
+			(while (search-forward "/sponsor" nil t)
+			    (replace-match "https://www.tldrnewsletter.com/sponsor"))
+        )
 
         ;; Render HTML content so it is readable to the user
         (shr-render-region (point-min) (point-max))
