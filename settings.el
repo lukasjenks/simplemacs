@@ -24,7 +24,7 @@
 
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
-((string-equal system-type "gnu/linux") (global-display-line-number-mode t)))
+((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
 
 ;; (require 'hlinum)
 ;; (hlinum-activate)
@@ -36,10 +36,14 @@
 
 (xterm-mouse-mode t)
 
-(setq-default indent-tabs-mode nil)
+;;(setq-default indent-tabs-mode nil)
+;;(setq-default tab-width 4)
+;;(setq c-basic-offset 4)
+;;(setq tab-stop-list (number-sequence 4 200 4))
+
+(setq-default indent-tabs-mode t)
 (setq-default tab-width 4)
-(setq c-basic-offset 4)
-(setq tab-stop-list (number-sequence 4 200 4))
+(setq backward-delete-char-untabify-method 'hungry)
 
 (setq scroll-conservatively 101)
 
@@ -90,5 +94,33 @@
 ;; (ac-config-default)
 ;; (global-auto-complete-mode t)
 ;; (ac-linum-workaround)
+
+(add-hook 'after-init-hook 'global-company-mode)
+
+(defun tldr-newsletter () (interactive)
+    (switch-to-buffer (get-buffer-create "tldr-newsletter"))
+
+    ;; Check if today's tldr is available (released 6AM ETC)
+    ;; (if (equal (shell-command-to-string (concat "/usr/bin/curl -s -o /dev/null -w \"%{http_code}\" http://www.tldrnewsletter.com/archives/" (format-time-string "%Y%m%d"))) "200")
+
+    (with-current-buffer "tldr-newsletter"
+        (goto-char (point-max))
+
+        (cond
+            ((string-equal system-type "windows-nt")
+                (setq curl-cmd "C:/Windows/System32/curl -s https://www.tldrnewsletter.com/archives/"))
+            ((string-equal system-type "gnu/linux")
+                (setq curl-cmd "/usr/bin/curl -s https://www.tldrnewsletter.com/archives/")))
+
+                ;; Insert latest tldr newsletter HTML webpage into the buffer
+                (insert
+                    (shell-command-to-string (concat curl-cmd (format-time-string "%Y%m%d"))))
+
+        ;; Render HTML content so it is readable to the user
+        (shr-render-region (point-min) (point-max))
+        (beginning-of-buffer)
+        (read-only-mode 1)
+    )
+)
 
 (setq x-select-enable-clipboard t)

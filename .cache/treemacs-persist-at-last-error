@@ -1,4 +1,6 @@
-# State when last error occurred on 2019-09-18 08:48:07
-# Error was 'Cannot end with a project or workspace name' in line '* Default'
+# State when last error occurred on 2019-09-19 20:26:04
+# Error was (error Command attempted to use minibuffer while in minibuffer)
 
 * Default
+** camms-portal
+ - path :: c:/Users/ljenks/Documents/camms-portal
