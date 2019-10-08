@@ -36,11 +36,6 @@
 
 (xterm-mouse-mode t)
 
-;;(setq-default indent-tabs-mode nil)
-;;(setq-default tab-width 4)
-;;(setq c-basic-offset 4)
-;;(setq tab-stop-list (number-sequence 4 200 4))
-
 (setq-default indent-tabs-mode t)
 (setq-default tab-width 4)
 (setq c-basic-offset 4)
@@ -98,12 +93,10 @@
 
 (add-hook 'after-init-hook 'global-company-mode)
 
+;; Main function. To call, use M-x tldr-newsletter
 (defun tldr-newsletter () (interactive)
+
     (switch-to-buffer (get-buffer-create "tldr-newsletter"))
-
-    ;; Check if today's tldr is available (released 6AM ETC)
-    ;; (if (equal (shell-command-to-string (concat "/usr/bin/curl -s -o /dev/null -w \"%{http_code}\" http://www.tldrnewsletter.com/archives/" (format-time-string "%Y%m%d"))) "200")
-
     (with-current-buffer "tldr-newsletter"
         (goto-char (point-max))
 
@@ -117,51 +110,53 @@
         (insert
             (shell-command-to-string (concat curl-cmd (get-url-suffix))))
 
-		(replace-in-buffer "tldr-newsletter" "/sponsor" "https://www.tldrnewsletter.com/sponsor")
-		(replace-in-buffer "tldr-newsletter" "/privacy" "https://www.tldrnewsletter.com/privacy")
-		(replace-in-buffer "tldr-newsletter" "/terms" "https://www.tldrnewsletter.com/terms")
-		(replace-in-buffer "tldr-newsletter" "/archives" "https://www.tldrnewsletter.com/archives")
-		(replace-in-buffer "tldr-newsletter" "/rss" "https://www.tldrnewsletter.com/rss")
+ 	       (replace-in-buffer "tldr-newsletter" "/sponsor" "https://www.tldrnewsletter.com/sponsor")
+ 	       (replace-in-buffer "tldr-newsletter" "/privacy" "https://www.tldrnewsletter.com/privacy")
+ 	       (replace-in-buffer "tldr-newsletter" "/terms" "https://www.tldrnewsletter.com/terms")
+ 	       (replace-in-buffer "tldr-newsletter" "/archives" "https://www.tldrnewsletter.com/archives")
+ 	       (replace-in-buffer "tldr-newsletter" "/rss" "https://www.tldrnewsletter.com/rss")
 
         ;; Render HTML content so it is readable to the user
         (shr-render-region (point-min) (point-max))
         (beginning-of-buffer)
-        (read-only-mode 1)
-    )
-)
+        (read-only-mode 1)))
 
+;; This function takes the name of a buffer, a string to replace, and a replacement string,
+;; and replaces all instances of the string to replace in the given buffer with the new string
 (defun replace-in-buffer (buffer old new)
     (with-current-buffer buffer
         (let ((case-fold-search t)) ; or nil
             (goto-char (point-min))
-		    (while (search-forward old nil t)
-		        (replace-match new)))
-	)
-)
+ 		   (while (search-forward old nil t)
+ 		       (replace-match new)))))
+
 ;; This function take a potentially single or double digit number
 ;; and returns a double digit string, preceding single digit numbers
 ;; with a zero.
 (defun format-number (month)
-  (if (< month 10)
-       (concat "0" (number-to-string month))
-       (number-to-string month))
-)
+    (if (< month 10)
+    	   (concat "0" (number-to-string month))
+    	   (number-to-string month)))
 
 ;; This function returns a string representing a date, e.g.
 ;; "20191002" for Oct. 3rd, 2019. If it has passed 6AM EST,
 ;; the function returns the current date. If it is earlier than
 ;; 6AM EST, it returns yesterday's date.
 (defun get-url-suffix ()
-  (setq time (parse-time-string (current-time-string nil "EST")))
-  (setq time-list
-   	     (if (>= (nth 2 time) 6)
-   		     (list (nth 5 time)(nth 4 time)(nth 3 time))
-   		 (list (nth 5 time)(nth 4 time)(- (nth 3 time) 1))))
-  (setq url-suffix
-   	     (concat
-   	      (number-to-string (nth 0 time-list))
-   	      (format-number (nth 1 time-list))
-   	      (format-number (nth 2 time-list))))
-)
+    (setq time (parse-time-string (current-time-string nil "EST")))
+    (setq time-list
+    	   (if (>= (nth 2 time) 6)
+    		   (list (nth 5 time)(nth 4 time)(nth 3 time))
+    		   (list (nth 5 time)(nth 4 time)(- (nth 3 time) 1))))
+    (setq url-suffix
+    	   (concat
+    		   (number-to-string (nth 0 time-list))
+    		   (format-number (nth 1 time-list))
+    		   (format-number (nth 2 time-list)))))
+
+;;(define-key (current-global-map) (kbd "M-x indent")
+    ;;(lookup-key (current-global-map) (kbd "C-u C-x TAB")))
+;;(define-key (current-global-map) (kbd "M-x unindent")
+    ;;(lookup-key (current-global-map) (kbd "C-u -4 M-x indent-rigidly")))
 
 (setq x-select-enable-clipboard t)
