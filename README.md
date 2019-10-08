@@ -2,7 +2,7 @@
 
 ## Installation
 
-### Optional
+#### Optional
 Backup your ~/.emacs.d and ~/.emacs file, if you want to keep your current emacs configuration.
 To do this, execute the following in the terminal:
 
@@ -12,7 +12,7 @@ To do this, execute the following in the terminal:
 
 `mv .emacs old.emacs`
 
-### Replacing your configuration
+#### Replacing your configuration
 
 `cd ~`
 
@@ -21,3 +21,12 @@ To do this, execute the following in the terminal:
 `rm -rf .emacs.d`
 
 `git clone https://github.com/lukasjenks/emacsconfig.git .emacs.d`
+
+## Fonts
+In this specific configuration, I use the font SourceCodePro-Regular,
+which is included in this repository. To install the font, execute
+the following (after executing the above commands):
+
+`cd ~/.emacs.d`
+
+`cp SourceCodePro/SourceCodePro-Regular.ttf ~/.fonts/SourceCodePro-Regular.ttf`
