@@ -48,7 +48,7 @@
 ** Supress display-line-numbers-mode in various minor modes
    #+BEGIN_SRC emacs-lisp
    (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
-   (add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode-mode -1)))
+   (add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode -1)))
    (add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
    (add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
    #+END_SRC
@@ -173,6 +173,11 @@
  		   (replace-in-buffer "tldr-newsletter" "/terms" "https://www.tldrnewsletter.com/terms")
  		   (replace-in-buffer "tldr-newsletter" "/archives" "https://www.tldrnewsletter.com/archives")
  		   (replace-in-buffer "tldr-newsletter" "/rss" "https://www.tldrnewsletter.com/rss")
+
+		   (replace-in-buffer "tldr-newsletter" "Big Tech & Startups" "<b><u>Big Tech & Startups</u></b>")
+		   (replace-in-buffer "tldr-newsletter" "Science & Cutting Edge Technology" "<b><u>Science & Cutting Edge Technology</b></u>")
+		   (replace-in-buffer "tldr-newsletter" "Programming, Design & Data Science" "<b><u>Programming, Design & Data Science</b></u>")
+		   (replace-in-buffer "tldr-newsletter" "Miscellaneous" "<b><u>Miscellaneous</b></u>")
  
             ;; Render HTML content so it is readable to the user
             (shr-render-region (point-min) (point-max))
@@ -183,7 +188,7 @@
     ;; and replaces all instances of the string to replace in the given buffer with the new string
     (defun replace-in-buffer (buffer old new)
         (with-current-buffer buffer
-            (let ((case-fold-search t)) ; or nil
+            (let ((case-fold-search t))
                 (goto-char (point-min))
  		       (while (search-forward old nil t)
  		           (replace-match new)))))
@@ -202,10 +207,19 @@
     ;; 6AM EST, it returns yesterday's date.
     (defun get-url-suffix ()
         (setq time (parse-time-string (current-time-string nil "EST")))
-        (setq time-list
-    	       (if (>= (nth 2 time) 6)
-    		       (list (nth 5 time)(nth 4 time)(nth 3 time))
-    		       (list (nth 5 time)(nth 4 time)(- (nth 3 time) 1))))
+		;; Set time list to yesterday's date if its a saturday
+		(if (= (nth 6 time) 7)
+		    (progn (setq time-list (parse-time-string (format-time-string "%B %d, %Y" (time-subtract (current-time) (* 24 3600)))))
+			 (setq time-list (list (nth 5 time-list) (nth 4 time-list) (nth 3 time-list))))
+			;; Set time list to 2 days ago's date if its a sunday
+			(if (= (nth 6 time) 0)
+			    (progn (setq time-list (parse-time-string (format-time-string "%B %d, %Y" (time-subtract (current-time) (* 48 3600)))))
+			     (setq time-list (list (nth 5 time-list) (nth 4 time-list) (nth 3 time-list))))
+				;; Otherwise if its past 6am EST and its a weekday, use current date. Else use yesterday's date
+				(if (>= (nth 2 time) 6)
+    		       (setq time-list (list (nth 5 time)(nth 4 time)(nth 3 time)))
+    		       (progn (setq time-list (parse-time-string (format-time-string "%B %d, %Y" (time-subtract (current-time) (* 24 3600)))))
+				    (setq time-list (list (nth 5 time-list) (nth 4 time-list) (nth 3 time-list)))))))
         (setq url-suffix
     	       (concat
     		       (number-to-string (nth 0 time-list))
