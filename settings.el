@@ -33,6 +33,7 @@
 (add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
+(add-hook 'xkcd-mode-hook (lambda() (display-line-numbers-mode -1)))
 
 (column-number-mode 1)
 
