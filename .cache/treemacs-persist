@@ -3,3 +3,7 @@
  - path :: ~/Documents/Work/camms-portal
 ** emacs-config
  - path :: ~/.emacs.d
+** unix-utilities
+ - path :: ~/Documents/Projects/unixutilities
+** react-complete-guide
+ - path :: ~/Documents/Projects/react-complete-guide

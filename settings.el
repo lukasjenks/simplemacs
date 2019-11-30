@@ -7,7 +7,7 @@
 
 (setq initial-major-mode 'text-mode)
 
-(menu-bar-mode -1)
+;(menu-bar-mode -1)
 (tool-bar-mode -1)
 
 (setq initial-scratch-message nil)
@@ -30,16 +30,57 @@
 ;; (hlinum-activate)
 
 (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
-(add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode-mode -1)))
+(add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
 
+(column-number-mode 1)
+
 (xterm-mouse-mode t)
 
-(setq-default indent-tabs-mode t)
-(setq-default tab-width 4)
-(setq c-basic-offset 4)
+;(setq-default indent-tabs-mode t)
+;(setq-default tab-width 4)
+;(setq c-basic-offset 4)
+;(setq backward-delete-char-untabify-method 'hungry)
+
+; START TABS CONFIG
+;; Create a variable for our preferred tab width
+(setq custom-tab-width 4)
+
+;; Two callable functions for enabling/disabling tabs in Emacs
+(defun disable-tabs () (setq indent-tabs-mode nil))
+(defun enable-tabs  ()
+  (local-set-key (kbd "TAB") 'tab-to-tab-stop)
+  (setq indent-tabs-mode t)
+  (setq tab-width custom-tab-width))
+
+;; Hooks to Enable Tabs
+(add-hook 'prog-mode-hook 'enable-tabs)
+;; Hooks to Disable Tabs
+(add-hook 'lisp-mode-hook 'disable-tabs)
+(add-hook 'emacs-lisp-mode-hook 'disable-tabs)
+
+;; Language-Specific Tweaks
+(setq-default python-indent-offset custom-tab-width) ;; Python
+(setq-default js-indent-level custom-tab-width)      ;; Javascript
+(setq sh-basic-offset 4)
+
+;; Making electric-indent behave sanely
+(setq-default electric-indent-inhibit t)
+
+;; Make the backspace properly erase the tab instead of
+;; removing 1 space at a time.
 (setq backward-delete-char-untabify-method 'hungry)
+
+;; WARNING: This will change your life
+;; (OPTIONAL) Visualize tabs as a pipe character - "|"
+;; This will also show trailing characters as they are useful to spot.
+(setq whitespace-style '(face tabs tab-mark trailing))
+(custom-set-faces
+ '(whitespace-tab ((t (:foreground "#636363")))))
+(setq whitespace-display-mappings
+  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
+(global-whitespace-mode) ; Enable whitespace mode everywhere
 
 (setq scroll-conservatively 101)
 
@@ -150,7 +191,7 @@
 (defun get-url-suffix ()
     (setq time (parse-time-string (current-time-string nil "EST")))
 	    ;; Set time list to yesterday's date if its a saturday
-	    (if (= (nth 6 time) 7)
+	    (if (= (nth 6 time) 6)
 		(progn (setq time-list (parse-time-string (format-time-string "%B %d, %Y" (time-subtract (current-time) (* 24 3600)))))
 		     (setq time-list (list (nth 5 time-list) (nth 4 time-list) (nth 3 time-list))))
 		    ;; Set time list to 2 days ago's date if its a sunday
