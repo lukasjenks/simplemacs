@@ -22,6 +22,8 @@
         (and (get-buffer buffer)
          (kill-buffer buffer)))))
 
+(electric-pair-mode 1)
+
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
 ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
@@ -65,6 +67,8 @@
 (setq-default python-indent-offset custom-tab-width) ;; Python
 (setq-default js-indent-level custom-tab-width)      ;; Javascript
 (setq sh-basic-offset 4)
+(setq c-basic-offset 4)
+(setq-default tab-width 4)
 
 ;; Making electric-indent behave sanely
 (setq-default electric-indent-inhibit t)
@@ -124,7 +128,7 @@
 (cond
 ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
 ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
-(setq inferior-lisp-program "alisp")
+(setq inferior-lisp-program "sbcl")
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))

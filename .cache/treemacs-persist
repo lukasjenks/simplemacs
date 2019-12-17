@@ -3,6 +3,8 @@
  - path :: ~/Documents/Work/camms-portal
 ** emacs-config
  - path :: ~/.emacs.d
+** advent-of-code
+ - path :: ~/Documents/Projects/AdventOfCode2019
 ** unix-utilities
  - path :: ~/Documents/Projects/unixutilities
 ** react-complete-guide

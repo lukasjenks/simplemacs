@@ -33,6 +33,10 @@
            (and (get-buffer buffer)
             (kill-buffer buffer)))))   
    #+END_SRC
+** Electric modes
+   #+BEGIN_SRC emacs-lisp
+   (electric-pair-mode 1)
+   #+END_SRC
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
@@ -91,6 +95,8 @@
    (setq-default python-indent-offset custom-tab-width) ;; Python
    (setq-default js-indent-level custom-tab-width)      ;; Javascript
    (setq sh-basic-offset 4)
+   (setq c-basic-offset 4)
+   (setq-default tab-width 4)
 
    ;; Making electric-indent behave sanely
    (setq-default electric-indent-inhibit t)
@@ -174,7 +180,7 @@
    (cond
    ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
    ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
-   (setq inferior-lisp-program "alisp")
+   (setq inferior-lisp-program "sbcl")
    #+END_SRC
 ** Org-bullets
    #+BEGIN_SRC emacs-lisp
