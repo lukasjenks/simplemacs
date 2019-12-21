@@ -27,11 +27,11 @@
 ** Kill completions and messages buffers
    #+BEGIN_SRC emacs-lisp
    (kill-buffer "*Messages*")
-   (add-hook 'minibuffer-exit-hook 
+   (add-hook 'minibuffer-exit-hook
       '(lambda ()
          (let ((buffer "*Completions*"))
            (and (get-buffer buffer)
-            (kill-buffer buffer)))))   
+            (kill-buffer buffer)))))
    #+END_SRC
 ** Electric modes
    #+BEGIN_SRC emacs-lisp
@@ -44,18 +44,21 @@
    ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
    ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
    #+END_SRC
-** Enable hlinum
+** Enable highlighting line numbers globally
    #+BEGIN_SRC emacs-lisp
-   ;; (require 'hlinum)
-   ;; (hlinum-activate)
+   ;; highlight line with the cursor, preserving the colours.
+   (global-hl-line-mode 1)
    #+END_SRC
 ** Supress display-line-numbers-mode in various minor modes
    #+BEGIN_SRC emacs-lisp
    (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
+   (add-hook 'neotree-mode-hook (lambda() (display-line-numbers-mode -1)))
    (add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode -1)))
    (add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
    (add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
    (add-hook 'xkcd-mode-hook (lambda() (display-line-numbers-mode -1)))
+   ;; disable line numbers in org mode for efficiency
+   (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
    #+END_SRC
 ** Enable column number display
    #+BEGIN_SRC emacs-lisp
@@ -147,7 +150,7 @@
    ((string-equal system-type "gnu/linux")
    (set-face-attribute 'default nil
                     :family "SourceCodePro-Regular"
-                    :height 115
+                    :height 116
                     :weight 'normal
                     :width 'normal)))
    #+END_SRC
@@ -161,19 +164,28 @@
    #+BEGIN_SRC emacs-lisp
    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
    #+END_SRC
-** Centaur tabs
+** Centau
+r tabs
    #+BEGIN_SRC emacs-lisp
-   (require 'centaur-tabs)
-   (centaur-tabs-mode t)
-   ;; (global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
-   ;; (global-set-key (kbd "C-8") 'centaur-tabs-backward)
-   ;; (global-set-key (kbd "C-9") 'centaur-tabs-forward)
-   (setq centaur-tabs-style "alternate")
-   (setq centaur-tabs-set-bar 'over)
+	(require 'centaur-tabs)
+	(centaur-tabs-mode t)
+	(global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
+	(global-set-key (kbd "C-8") 'centaur-tabs-backward)
+	(global-set-key (kbd "C-9") 'centaur-tabs-forward)
+	(setq centaur-tabs-style "alternate")
+	(setq centaur-tabs-set-bar 'under)
+	(setq centaur-theme 'dark)
+	(setq centaur-logo nil)
    #+END_SRC
 ** Treemacs
    #+BEGIN_SRC emacs-lisp
    (global-set-key [f9] 'treemacs)
+   #+END_SRC
+** Neotree
+   #+BEGIN_SRC emacs-lisp
+   (require 'neotree)
+   (global-set-key [f8] 'neotree-toggle)
+   (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
    #+END_SRC
 ** SLIME
    #+BEGIN_SRC emacs-lisp
@@ -196,6 +208,10 @@
 ** company-mode
    #+BEGIN_SRC emacs-lisp
    (add-hook 'after-init-hook 'global-company-mode)
+   #+END_SRC
+** linting
+   #+BEGIN_SRC emacs-lisp
+   (global-flycheck-mode)
    #+END_SRC
 * My packages
 ** tldr

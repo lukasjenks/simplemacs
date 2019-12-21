@@ -16,7 +16,7 @@
 (setq inhibit-startup-buffer-menu t)
 
 (kill-buffer "*Messages*")
-(add-hook 'minibuffer-exit-hook 
+(add-hook 'minibuffer-exit-hook
    '(lambda ()
       (let ((buffer "*Completions*"))
         (and (get-buffer buffer)
@@ -28,14 +28,17 @@
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
 ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
 
-;; (require 'hlinum)
-;; (hlinum-activate)
+;; highlight line with the cursor, preserving the colours.
+(global-hl-line-mode 1)
 
 (add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
+(add-hook 'neotree-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
 (add-hook 'xkcd-mode-hook (lambda() (display-line-numbers-mode -1)))
+;; disable line numbers in org mode for efficiency
+(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (column-number-mode 1)
 
@@ -106,7 +109,7 @@
 ((string-equal system-type "gnu/linux")
 (set-face-attribute 'default nil
                  :family "SourceCodePro-Regular"
-                 :height 115
+                 :height 116
                  :weight 'normal
                  :width 'normal)))
 
@@ -117,13 +120,19 @@
 
 (require 'centaur-tabs)
 (centaur-tabs-mode t)
-;; (global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
-;; (global-set-key (kbd "C-8") 'centaur-tabs-backward)
-;; (global-set-key (kbd "C-9") 'centaur-tabs-forward)
+(global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
+(global-set-key (kbd "C-8") 'centaur-tabs-backward)
+(global-set-key (kbd "C-9") 'centaur-tabs-forward)
 (setq centaur-tabs-style "alternate")
-(setq centaur-tabs-set-bar 'over)
+(setq centaur-tabs-set-bar 'under)
+(setq centaur-theme 'dark)
+(setq centaur-logo nil)
 
 (global-set-key [f9] 'treemacs)
+
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 (cond
 ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
@@ -138,6 +147,8 @@
 ;; (ac-linum-workaround)
 
 (add-hook 'after-init-hook 'global-company-mode)
+
+(global-flycheck-mode)
 
 ;; Main function. To call, use M-x tldr-newsletter
 (defun tldr-newsletter () (interactive)

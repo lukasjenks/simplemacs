@@ -1,11 +1,7 @@
 * Default
 ** camms-portal
  - path :: ~/Documents/Work/camms-portal
+** projects
+ - path :: ~/Documents/Projects
 ** emacs-config
  - path :: ~/.emacs.d
-** advent-of-code
- - path :: ~/Documents/Projects/AdventOfCode2019
-** unix-utilities
- - path :: ~/Documents/Projects/unixutilities
-** react-complete-guide
- - path :: ~/Documents/Projects/react-complete-guide

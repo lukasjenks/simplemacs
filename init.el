@@ -9,12 +9,40 @@
  '(ansi-color-names-vector
    ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
  '(compilation-message-face (quote default))
- '(custom-enabled-themes (quote (night-owl)))
+ '(cua-global-mark-cursor-color "#689d6a")
+ '(cua-normal-cursor-color "#a89984")
+ '(cua-overwrite-cursor-color "#d79921")
+ '(cua-read-only-cursor-color "#98971a")
+ '(custom-enabled-themes (quote (doom-palenight)))
  '(custom-safe-themes
    (quote
-    ("f357d72451c46d51219c3afd21bb397a33cb059e21db1f4adeffe5b8a9093537" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" "db295e289b0d8f3dc260c902715a02beb2fcc97d538832dc6ba6415b953b4dfc" "a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" default)))
+    ("5c9a906b076fe3e829d030a404066d7949e2c6c89fc4a9b7f48c054333519ee7" "32fd809c28baa5813b6ca639e736946579159098d7768af6c68d78ffa32063f4" "a4b9eeeabde73db909e6b080baf29d629507b44276e17c0c411ed5431faf87dd" "dc677c8ebead5c0d6a7ac8a5b109ad57f42e0fe406e4626510e638d36bcc42df" "1ca1f43ca32d30b05980e01fa60c107b02240226ac486f41f9b790899f6f6e67" "1897b97f63e91a792e8540c06402f29d5edcbfb0aafd64b1b14270663d6868ee" "12dd37432bb454355047c967db886769a6c60e638839405dad603176e2da366b" "41c8c11f649ba2832347fe16fe85cf66dafe5213ff4d659182e25378f9cfc183" "04589c18c2087cd6f12c01807eed0bdaa63983787025c209b89c779c61c3a4c4" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "7f1d414afda803f3244c6fb4c2c64bea44dac040ed3731ec9d75275b9e831fe5" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "f357d72451c46d51219c3afd21bb397a33cb059e21db1f4adeffe5b8a9093537" "e6ccd0cc810aa6458391e95e4874942875252cd0342efd5a193de92bfbb6416b" "db295e289b0d8f3dc260c902715a02beb2fcc97d538832dc6ba6415b953b4dfc" "a2cde79e4cc8dc9a03e7d9a42fabf8928720d420034b66aecc5b665bbf05d4e9" default)))
+ '(ensime-sem-high-faces
+   (quote
+    ((var :foreground "#9876aa" :underline
+          (:style wave :color "yellow"))
+     (val :foreground "#9876aa")
+     (varField :slant italic)
+     (valField :foreground "#9876aa" :slant italic)
+     (functionCall :foreground "#a9b7c6")
+     (implicitConversion :underline
+                         (:color "#808080"))
+     (implicitParams :underline
+                     (:color "#808080"))
+     (operator :foreground "#cc7832")
+     (param :foreground "#a9b7c6")
+     (class :foreground "#4e807d")
+     (trait :foreground "#4e807d" :slant italic)
+     (object :foreground "#6897bb" :slant italic)
+     (package :foreground "#cc7832")
+     (deprecated :strike-through "#a9b7c6"))))
  '(fci-rule-color "#3C3D37")
+ '(fringe-mode 6 nil (fringe))
  '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-symbol-colors
+   (quote
+    ("#51d941b82b0f" "#37ea42e437b4" "#5b6434562bc9" "#47f636913db1" "#437d4142298e" "#533d35ed2652" "#31483d9f3e1f")))
+ '(highlight-symbol-foreground-color "#bdae93")
  '(highlight-tail-colors
    (quote
     (("#3C3D37" . 0)
@@ -25,13 +53,29 @@
      ("#A75B00" . 70)
      ("#F309DF" . 85)
      ("#3C3D37" . 100))))
+ '(hl-bg-colors
+   (quote
+    ("#a76e00" "#a53600" "#b21b0a" "#9f4d64" "#8b2a58" "#14676b" "#2e7d33" "#747400")))
+ '(hl-fg-colors
+   (quote
+    ("#282828" "#282828" "#282828" "#282828" "#282828" "#282828" "#282828" "#282828")))
+ '(hl-paren-colors (quote ("#689d6a" "#d79921" "#458588" "#b16286" "#98971a")))
+ '(linum-format (quote dynamic))
  '(magit-diff-use-overlays nil)
+ '(nrepl-message-colors
+   (quote
+    ("#fb4933" "#d65d0e" "#d79921" "#747400" "#b9b340" "#14676b" "#689d6a" "#d3869b" "#b16286")))
  '(package-selected-packages
    (quote
-    (night-owl-theme helm tide go-mode gandalf-theme gdscript-mode xkcd restart-emacs company-web company-shell company-restclient company-plsense company-go company-c-headers company auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters)))
+    (all-the-icons neotree doom-themes darcula-theme flycheck cherry-blossom-theme solarized-theme night-owl-theme helm tide go-mode gandalf-theme gdscript-mode xkcd restart-emacs company-web company-shell company-restclient company-plsense company-go company-c-headers company auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters)))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#98971a" "#32302f" 0.2))
+ '(tabbar-separator (quote (0.2)))
+ '(term-default-bg-color "#282828")
+ '(term-default-fg-color "#a89984")
  '(vc-annotate-background nil)
+ '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
    (quote
     ((20 . "#F92672")
@@ -55,7 +99,11 @@
  '(vc-annotate-very-old-color nil)
  '(weechat-color-list
    (quote
-    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0"))))
+    (unspecified "#272822" "#3C3D37" "#F70057" "#F92672" "#86C30D" "#A6E22E" "#BEB244" "#E6DB74" "#40CAE4" "#66D9EF" "#FB35EA" "#FD5FF0" "#74DBCD" "#A1EFE4" "#F8F8F2" "#F8F8F0")))
+ '(xterm-color-names
+   ["#32302f" "#fb4933" "#98971a" "#d79921" "#458588" "#d3869b" "#689d6a" "#a89984"])
+ '(xterm-color-names-bright
+   ["#282828" "#d65d0e" "#7c6f64" "#282828" "#a89984" "#b16286" "#bdae93" "#fbf1c7"]))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
