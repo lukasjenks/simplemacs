@@ -67,11 +67,12 @@
     ("#fb4933" "#d65d0e" "#d79921" "#747400" "#b9b340" "#14676b" "#689d6a" "#d3869b" "#b16286")))
  '(package-selected-packages
    (quote
-    (all-the-icons neotree doom-themes darcula-theme flycheck cherry-blossom-theme solarized-theme night-owl-theme helm tide go-mode gandalf-theme gdscript-mode xkcd restart-emacs company-web company-shell company-restclient company-plsense company-go company-c-headers company auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters)))
+    (powerline all-the-icons neotree doom-themes darcula-theme flycheck cherry-blossom-theme solarized-theme night-owl-theme helm tide go-mode gandalf-theme gdscript-mode xkcd restart-emacs company-web company-shell company-restclient company-plsense company-go company-c-headers company auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters)))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#98971a" "#32302f" 0.2))
- '(tabbar-separator (quote (0.2)))
+ '(tabbar-background-color "gray20")
+ '(tabbar-use-images nil)
  '(term-default-bg-color "#282828")
  '(term-default-fg-color "#a89984")
  '(vc-annotate-background nil)
