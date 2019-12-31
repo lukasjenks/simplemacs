@@ -69,7 +69,7 @@ determine the exact padding."
    (doc-comments   (if doom-challenger-deep-brighter-comments (doom-darken dark-cyan 0.3) base5) )
    (constants      cyan)
    (functions      magenta)
-   (keywords       red)
+   (keywords       blue) ;; changed this
    (methods        magenta)
    (operators      teal)
    (type           blue)

@@ -10,6 +10,8 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 
+(display-time-mode 1)
+
 (setq initial-scratch-message nil)
 (setq message-log-max nil)
 (setq inhibit-startup-screen t)
@@ -31,14 +33,17 @@
 ;; highlight line with the cursor, preserving the colours.
 (global-hl-line-mode 1)
 
-(add-hook 'treemacs-mode-hook (lambda() (display-line-numbers-mode -1)))
-(add-hook 'neotree-mode-hook (lambda() (display-line-numbers-mode -1)))
-(add-hook 'tetris-mode-hook (lambda() (display-line-numbers-mode -1)))
-(add-hook 'snake-mode-hook (lambda() (display-line-numbers-mode -1)))
-(add-hook 'doctor-mode-hook (lambda() (display-line-numbers-mode -1)))
-(add-hook 'xkcd-mode-hook (lambda() (display-line-numbers-mode -1)))
+(defun no-line-numbers ()
+    (display-line-numbers-mode -1)
+)
+(add-hook 'treemacs-mode-hook 'no-line-numbers)
+(add-hook 'neotree-mode-hook 'no-line-numbers)
+(add-hook 'tetris-mode-hook 'no-line-numbers)
+(add-hook 'snake-mode-hook 'no-line-numbers)
+(add-hook 'doctor-mode-hook 'no-line-numbers)
+(add-hook 'xkcd-mode-hook 'no-line-numbers)
 ;; disable line numbers in org mode for efficiency
-(add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
+(add-hook 'org-mode-hook 'no-line-numbers)
 
 (column-number-mode 1)
 
@@ -135,10 +140,7 @@
 (customize-set-variable 'tabbar-use-images nil)
 (tabbar-mode 1)
 
-;; ;; My preferred keys
-;; (define-key global-map [(alt j)] 'tabbar-backward)
-;; (define-key global-map [(alt k)] 'tabbar-forward)
-
+;; My preferred keys
 (global-set-key (kbd "M-j") 'tabbar-backward)
 (global-set-key (kbd "M-k") 'tabbar-forward)
 
@@ -159,8 +161,7 @@
 (set-face-attribute 'tabbar-button nil
 		:box nil)
 
-;; Group tabs by project/directory, and hide some buffers
-;; <https://www.emacswiki.org/emacs/TabBarMode#toc15>
+;; Group tabs by project/directory, and hide some buffer <https://www.emacswiki.org/emacs/TabBarMode#toc15>
 (defun my/tabbar-buffer-groups ()
   (cond ((member (buffer-name)
 				 '("*Completions*"
@@ -173,21 +174,21 @@
 (setq tabbar-buffer-groups-function #'my/tabbar-buffer-groups)
 
 ;; Keep tabs sorted <https://www.emacswiki.org/emacs/TabBarMode#toc7>
-(defun tabbar-add-tab (tabset object &optional _append_ignored)
-  "Add to TABSET a tab with value OBJECT if there isn't one there yet.
- If the tab is added, it is added at the beginning of the tab list,
- unless the optional argument APPEND is non-nil, in which case it is
- added at the end."
-  (let ((tabs (tabbar-tabs tabset)))
-	(if (tabbar-get-tab object tabset)
-		tabs
-	  (let ((tab (tabbar-make-tab object tabset)))
-		(tabbar-set-template tabset nil)
-		(set tabset (sort (cons tab tabs)
-				 (lambda (a b) (string< (buffer-name (car a))
-							       (buffer-name (car b))))))))))
+;; (defun tabbar-add-tab (tabset object &optional _append_ignored)
+;;   "Add to TABSET a tab with value OBJECT if there isn't one there yet.
+;;  If the tab is added, it is added at the beginning of the tab list,
+;;  unless the optional argument APPEND is non-nil, in which case it is
+;;  added at the end."
+;;   (let ((tabs (tabbar-tabs tabset)))
+;; 	(if (tabbar-get-tab object tabset)
+;; 		tabs
+;; 	  (let ((tab (tabbar-make-tab object tabset)))
+;; 		(tabbar-set-template tabset nil)
+;; 		(set tabset (sort (cons tab tabs)
+;; 				 (lambda (a b) (string< (buffer-name (car a))
+;; 							   (buffer-name (car b))))))))))
 
-;; Use Powerline to make tabs look nicer
+;; ;; Use Powerline to make tabs look nicer
 ;; (this needs to run *after* the colors are set)
 (require 'powerline)
 (defvar my/tabbar-height 20)
