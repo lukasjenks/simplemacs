@@ -26,6 +26,13 @@
 
 (electric-pair-mode 1)
 
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+(defun toggle-fold ()
+      (interactive)
+      (save-excursion
+	(end-of-line)
+	(hs-toggle-hiding)))
+
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
 ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))

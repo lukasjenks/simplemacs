@@ -1,0 +1,1 @@
+("~/.emacs.d/" "~/Documents/Work/camms-portal/")

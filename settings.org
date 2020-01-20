@@ -41,6 +41,15 @@
    #+BEGIN_SRC emacs-lisp
    (electric-pair-mode 1)
    #+END_SRC
+** Collapsing functions functionality
+   #+BEGIN_SRC emacs-lisp
+   (add-hook 'prog-mode-hook #'hs-minor-mode)
+   (defun toggle-fold ()
+	 (interactive)
+	 (save-excursion
+	   (end-of-line)
+	   (hs-toggle-hiding)))
+   #+END_SRC
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
