@@ -50,6 +50,17 @@
 	   (end-of-line)
 	   (hs-toggle-hiding)))
    #+END_SRC
+** Frame package configuration
+   #+BEGIN_SRC emacs-lisp
+   (use-package frame
+  :ensure nil
+  :custom
+  (initial-frame-alist (quote ((fullscreen . maximized))))
+  :config
+  (blink-cursor-mode 1)
+  (when (member "Source Code Pro" (font-family-list))
+    (set-frame-font "Source Code Pro-12:weight=regular" t t)))
+   #+END_SRC
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
@@ -151,7 +162,8 @@
    #+END_SRC
 ** Change save directory for backup files
    #+BEGIN_SRC emacs-lisp
-   (setq backup-directory-alist `(("." . "~/saves")))
+   (setq backup-directory-alist `(("." . "~/.emacs-saves")))
+   (setq auto-save-file-name-transforms `(("." "~/.emacs-saves" t)))
    #+END_SRC
 * Appearance Settings
 ** Font settings

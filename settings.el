@@ -33,6 +33,15 @@
 	(end-of-line)
 	(hs-toggle-hiding)))
 
+(use-package frame
+:ensure nil
+:custom
+(initial-frame-alist (quote ((fullscreen . maximized))))
+:config
+(blink-cursor-mode 1)
+(when (member "Source Code Pro" (font-family-list))
+  (set-frame-font "Source Code Pro-12:weight=regular" t t)))
+
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
 ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
@@ -109,7 +118,8 @@
 
 (setq create-lockfiles nil)
 
-(setq backup-directory-alist `(("." . "~/saves")))
+(setq backup-directory-alist `(("." . "~/.emacsbackups")))
+(setq auto-save-file-name-transforms `(("." "~/.emacsautosaves" t)))
 
 (cond
 ((string-equal system-type "windows-nt")
