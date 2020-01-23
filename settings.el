@@ -118,8 +118,9 @@
 
 (setq create-lockfiles nil)
 
-(setq backup-directory-alist `(("." . "~/.emacsbackups")))
-(setq auto-save-file-name-transforms `(("." "~/.emacsautosaves" t)))
+(setq temporary-file-directory "~/.emacstmp")
+(setq backup-directory-alist `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
 
 (cond
 ((string-equal system-type "windows-nt")
