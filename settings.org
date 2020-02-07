@@ -162,9 +162,9 @@
    #+END_SRC
 ** Change save directory for backup files
    #+BEGIN_SRC emacs-lisp
-   (setq temporary-file-directory "~/.emacstmp")
-   (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
-   (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+   (setq tmp-file-dir "~/.emacstmp")
+   (setq backup-directory-alist `((".*" . ,tmp-file-dir)))
+   (setq auto-save-file-name-transforms `((".*" ,tmp-file-dir t)))
    #+END_SRC
 * Appearance Settings
 ** Font settings
@@ -195,82 +195,106 @@
    #+END_SRC
 ** Centaur tabs
    #+BEGIN_SRC emacs-lisp
-		  ;; (require 'centaur-tabs)
-		  ;; (centaur-tabs-mode t)
-		  ;; (global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
-		  ;; (global-set-key (kbd "C-8") 'centaur-tabs-backward)
-		  ;; (global-set-key (kbd "C-9") 'centaur-tabs-forward)
-		  ;; (setq centaur-tabs-style "alternate")
-		  ;; (setq centaur-tabs-set-bar 'under)
-		  ;; (setq centaur-theme 'dark)
-		  ;; (setq centaur-logo nil)
+			   ;; (require 'centaur-tabs)
+			   ;; (centaur-tabs-mode t)
+			   ;; (global-set-key (kbd "C-7") 'centaur-tabs-add-tab)
+			   ;; (global-set-key (kbd "C-8") 'centaur-tabs-backward)
+			   ;; (global-set-key (kbd "C-9") 'centaur-tabs-forward)
+			   ;; (setq centaur-tabs-style "alternate")
+			   ;; (setq centaur-tabs-set-bar 'under)
+			   ;; (setq centaur-theme 'dark)
+			   ;; (setq centaur-logo nil)
 
-	 ;; Tab Bar
-	 (require 'tabbar)
-	 (customize-set-variable 'tabbar-background-color "gray20")
-	 (customize-set-variable 'tabbar-separator '(0.0))
-	 (customize-set-variable 'tabbar-use-images nil)
-	 (tabbar-mode 1)
+	 ;; (use-package centaur-tabs
+	 ;;   :demand
+	 ;;   :bind (("M-j" . centaur-tabs-backward)
+	 ;;          ("M-k" . centaur-tabs-forward)
+	 ;;          ("M-l" . centaur-tabs-counsel-switch-group))
+	 ;;   :custom
+	 ;;   (centaur-tabs-set-bar 'under)
+	 ;;   (x-underline-at-descent-line t)
+	 ;;   (centaur-tabs-set-modified-marker t)
+	 ;;   (centaur-tabs-modified-marker " ● ")
+	 ;;   (centaur-tabs-cycle-scope 'tabs)
+	 ;;   (centaur-tabs-height 30)
+	 ;;   (centaur-tabs-set-icons t)
+	 ;;   (centaur-tabs-close-button " × ")
+	 ;;   :config
+	 ;;   (centaur-tabs-mode +1)
+	 ;;   (centaur-tabs-headline-match)
+	 ;;   (centaur-tabs-group-by-projectile-project)
+	 ;;   (when (member "Arial" (font-family-list))
+	 ;;     (centaur-tabs-change-fonts "Arial" 130)))
 
-	 ;; My preferred keys
-	 (global-set-key (kbd "M-j") 'tabbar-backward)
-	 (global-set-key (kbd "M-k") 'tabbar-forward)
+		  ;; Tab Bar
+		  (require 'tabbar)
+		  (customize-set-variable 'tabbar-background-color "gray20")
+		  (customize-set-variable 'tabbar-separator '(0.0))
+		  (customize-set-variable 'tabbar-use-images nil)
+		  (tabbar-mode 1)
 
-	 ;; Colors
-	 (set-face-attribute 'tabbar-default nil
-			 :background "gray20" :foreground
-			 "gray60" :distant-foreground "gray50"
-			 :family "Helvetica Neue" :box nil)
-	 (set-face-attribute 'tabbar-unselected nil
-			 :background "gray80" :foreground "black" :box nil)
-	 (set-face-attribute 'tabbar-modified nil
-			 :foreground "red4" :box nil
-			 :inherit 'tabbar-unselected)
-	 (set-face-attribute 'tabbar-selected nil
-			 :background "#4090c0" :foreground "white" :box nil)
-	 (set-face-attribute 'tabbar-selected-modified nil
-			 :inherit 'tabbar-selected :foreground "GoldenRod2" :box nil)
-	 (set-face-attribute 'tabbar-button nil
-			 :box nil)
+		  ;; My preferred keys
+		  (global-set-key (kbd "M-j") 'tabbar-backward)
+		  (global-set-key (kbd "M-k") 'tabbar-forward)
 
-	 ;; Group tabs by project/directory, and hide some buffer <https://www.emacswiki.org/emacs/TabBarMode#toc15>
-	 (defun my/tabbar-buffer-groups ()
-	   (cond ((member (buffer-name)
-					  '("*Completions*"
-						"*scratch*"
-						"*Messages*"
-						"*Ediff Registry*"))
-			  (list "#hide"))
-			 (t (list (or (cdr (project-current))
-						  (expand-file-name default-directory))))))
-	 (setq tabbar-buffer-groups-function #'my/tabbar-buffer-groups)
+		  ;; Colors
+		  (set-face-attribute 'tabbar-default nil
+				 :background "gray20" :foreground
+				 "gray60" :distant-foreground "gray50"
+				 :family "Helvetica Neue" :box nil)
+		  (set-face-attribute 'tabbar-unselected nil
+				 :background "gray80" :foreground "black" :box nil)
+		  (set-face-attribute 'tabbar-modified nil
+				 :foreground "red4" :box nil
+				 :inherit 'tabbar-unselected)
+		  (set-face-attribute 'tabbar-selected nil
+				 :background "#4090c0" :foreground "white" :box nil)
+		  (set-face-attribute 'tabbar-selected-modified nil
+				 :inherit 'tabbar-selected :foreground "GoldenRod2" :box nil)
+		  (set-face-attribute 'tabbar-button nil
+				 :box nil)
 
-	 ;; Keep tabs sorted <https://www.emacswiki.org/emacs/TabBarMode#toc7>
-	 ;; (defun tabbar-add-tab (tabset object &optional _append_ignored)
-	 ;;   "Add to TABSET a tab with value OBJECT if there isn't one there yet.
-	 ;;  If the tab is added, it is added at the beginning of the tab list,
-	 ;;  unless the optional argument APPEND is non-nil, in which case it is
-	 ;;  added at the end."
-	 ;;   (let ((tabs (tabbar-tabs tabset)))
-	 ;; 	(if (tabbar-get-tab object tabset)
-	 ;; 		tabs
-	 ;; 	  (let ((tab (tabbar-make-tab object tabset)))
-	 ;; 		(tabbar-set-template tabset nil)
-	 ;; 		(set tabset (sort (cons tab tabs)
-	 ;; 				 (lambda (a b) (string< (buffer-name (car a))
-	 ;; 							   (buffer-name (car b))))))))))
+		  ;; Group tabs by project/directory, and hide some buffer <https://www.emacswiki.org/emacs/TabBarMode#toc15>
+		  (defun my/tabbar-buffer-groups ()
+			(cond ((member (buffer-name)
+						  '("*Completions*"
+							"*scratch*"
+							"*Messages*"
+							"*Ediff Registry*"
+							"*Flycheck error messages*"
+							"*Local Variables*"
+							"*Backtrace*"))
+				  (list "#hide"))
+				 (t (list (or (cdr (project-current))
+							  (expand-file-name default-directory))))))
+		  (setq tabbar-buffer-groups-function #'my/tabbar-buffer-groups)
 
-	 ;; ;; Use Powerline to make tabs look nicer
-	 ;; (this needs to run *after* the colors are set)
-	 (require 'powerline)
-	 (defvar my/tabbar-height 20)
-	 (defvar my/tabbar-left (powerline-wave-right 'tabbar-default nil my/tabbar-height))
-	 (defvar my/tabbar-right (powerline-wave-left nil 'tabbar-default my/tabbar-height))
-	 (defun my/tabbar-tab-label-function (tab)
-	   (powerline-render (list my/tabbar-left
-							   (format " %s  " (car tab))
-							   my/tabbar-right)))
-	 (setq tabbar-tab-label-function #'my/tabbar-tab-label-function)
+		  ;; Keep tabs sorted <https://www.emacswiki.org/emacs/TabBarMode#toc7>
+		  ;; ;; (defun tabbar-add-tab (tabset object &optional _append_ignored)
+		  ;; ;;   "Add to TABSET a tab with value OBJECT if there isn't one there yet.
+		  ;; ;;  If the tab is added, it is added at the beginning of the tab list,
+		  ;; ;;  unless the optional argument APPEND is non-nil, in which case it is
+		  ;; ;;  added at the end."
+		  ;; ;;   (let ((tabs (tabbar-tabs tabset)))
+		  ;; ;; 	(if (tabbar-get-tab object tabset)
+		  ;; ;; 		tabs
+		  ;; ;; 	  (let ((tab (tabbar-make-tab object tabset)))
+		  ;; ;; 		(tabbar-set-template tabset nil)
+		  ;; ;; 		(set tabset (sort (cons tab tabs)
+		  ;; ;; 				 (lambda (a b) (string< (buffer-name (car a))
+		  ;; ;; 							   (buffer-name (car b))))))))))
+
+		  ;; ;; ;; Use Powerline to make tabs look nicer
+		  ;; ;; (this needs to run *after* the colors are set)
+		  (require 'powerline)
+		  (defvar my/tabbar-height 20)
+		  (defvar my/tabbar-left (powerline-wave-right 'tabbar-default nil my/tabbar-height))
+		  (defvar my/tabbar-right (powerline-wave-left nil 'tabbar-default my/tabbar-height))
+		  (defun my/tabbar-tab-label-function (tab)
+		  (powerline-render (list my/tabbar-left
+		  (format " %s  " (car tab))
+		  my/tabbar-right)))
+		  (setq tabbar-tab-label-function #'my/tabbar-tab-label-function)
    #+END_SRC
 ** Treemacs
    #+BEGIN_SRC emacs-lisp
