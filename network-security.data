@@ -1,0 +1,3 @@
+(
+ (:id "sha1:86e4b43bd38012c7b5666e53e158af0eb27d493f" :fingerprint "sha1:ef:5e:f5:f0:99:d3:f0:82:1a:f2:f2:9b:74:96:72:f3:c2:b7:5a:0c" :host "localhost:443" :conditions (:self-signed :no-host-match :expired :unknown-ca :invalid))
+)

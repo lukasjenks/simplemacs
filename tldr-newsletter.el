@@ -48,7 +48,7 @@
         (replace-in-buffer "tldr-newsletter" "Miscellaneous" "<b><u>Miscellaneous</b></u>")
 
         ;; Render HTML content so it is readable by the user
-        (shr-render-region (point-min) (point-max))
+        ;; (shr-render-region (point-min) (point-max))
         (beginning-of-buffer)
         (read-only-mode 1)))
 
