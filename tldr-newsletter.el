@@ -94,6 +94,6 @@
             (format-number (nth 1 time-list))
             (format-number (nth 2 time-list)))))
 
-;; (provide 'tldr-newsletter)
+(provide 'tldr-newsletter)
 
 ;;; tldr-newsletter ends here

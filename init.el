@@ -72,7 +72,7 @@
  '(objed-cursor-color "#ff5370")
  '(package-selected-packages
    (quote
-    (rjsx-mode ejc-sql go-complete go-imports go-projectile chess evil foggy-night-theme exec-path-from-shell json-mode js2-mode web-mode powerline all-the-icons neotree doom-themes darcula-theme flycheck cherry-blossom-theme solarized-theme night-owl-theme helm tide go-mode gandalf-theme gdscript-mode xkcd restart-emacs company-web company-shell company-restclient company-plsense company-go company-c-headers company auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters)))
+    (curl-to-elisp restclient request rjsx-mode ejc-sql go-complete go-imports go-projectile chess evil foggy-night-theme exec-path-from-shell json-mode js2-mode web-mode powerline all-the-icons neotree doom-themes darcula-theme flycheck cherry-blossom-theme solarized-theme night-owl-theme helm tide go-mode gandalf-theme gdscript-mode xkcd restart-emacs company-web company-shell company-restclient company-plsense company-go company-c-headers company auto-complete org-bullets org slime centaur-tabs treemacs hlinum monokai-theme rainbow-delimiters)))
  '(pdf-view-midnight-colors (cons "#292D3E" "#EEFFFF"))
  '(pos-tip-background-color "#FFFACE")
  '(pos-tip-foreground-color "#272822")

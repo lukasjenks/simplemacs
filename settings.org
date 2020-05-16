@@ -336,6 +336,7 @@
 ** tldr
    #+BEGIN_SRC emacs-lisp
    (load "~/.emacs.d/tldr-newsletter.el")
+   ;; (require 'tldr-newsletter.el)
    (load "~/.emacs.d/apex.el")
    #+END_SRC
 ** rename-buffer

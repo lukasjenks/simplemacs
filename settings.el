@@ -265,6 +265,7 @@
 (global-flycheck-mode)
 
 (load "~/.emacs.d/tldr-newsletter.el")
+;; (require 'tldr-newsletter.el)
 (load "~/.emacs.d/apex.el")
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
