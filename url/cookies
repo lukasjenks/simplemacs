@@ -3,7 +3,7 @@
 
 (setq url-cookie-storage
  '(("localhost"
-  [url-cookie "token" "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJTeXN0ZW0gIiwibGFzdG5hbWUiOiJBZG1pbiIsInBhcmVudGNvbnRhY3RpZCI6MSwiaWF0IjoxNTg5NjU4MzAzLCJleHAiOjE1ODk3NDQ3MDN9.IUzAMxZmG2LotDUV9pNr7E8BSYw5YTMaKFwZp3xOt5Q" "Sat May 16 21:45:03 2020 GMT" "/" "localhost" nil]))
+  [url-cookie "token" "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJTeXN0ZW0gIiwibGFzdG5hbWUiOiJBZG1pbiIsInBhcmVudGNvbnRhY3RpZCI6MSwiaWF0IjoxNTg5NjY2NjAzLCJleHAiOjE1ODk3NTMwMDN9._FqrAXYZ-r__MGEkQ0E5qom2zmkEC-U8ZdWSdS7tDZo" "Sun May 17 00:03:23 2020 GMT" "/" "localhost" nil]))
 )
 (setq url-cookie-secure-storage
  'nil)
