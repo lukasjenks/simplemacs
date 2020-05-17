@@ -40,9 +40,30 @@
     (with-current-buffer (concat "apex-" codeType "-list")
       (goto-char (point-max)) (insert responseBody) (beginning-of-buffer) (read-only-mode)))
 
+;; Retrieves the code text given the code type and code name, and inserts it into a new js-mode buffer
 (defun apex-get-code (codeType codeName)
-    (interactive "sWhat type of code? (reducer, logic, or rule): ")
-    (interactive (concat "sWhat is the name of the " codeType "?: "))
+    (interactive "sWhat type of code? (reducer, logic, or rule): \nsWhat is the name of the code?: ")
+    (setq responseBody (nth 1 (split-string (let
+                       ((url-request-method "GET"))
+                     (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?op=getcode&codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))) "\n\n")))
+    (switch-to-buffer (get-buffer-create (concat codeType "-" codeName)))
+    (with-current-buffer (concat codeType "-" codeName)
+      (goto-char (point-max)) (insert responseBody) (beginning-of-buffer) (js-mode)))
+
+;; Posts the content of the current buffer to its appropriate record in the DB
+(defun apex-post-code ()
+    (interactive)
+    (setq codeType (nth 0 (split-string (buffer-name) "-")))
+    (setq codeName (nth 1 (split-string (buffer-name) "-")))
+    (setq codeText (buffer-substring-no-properties (point-min) (point-max)))
+
+    (setq responseBody (nth 1 (split-string (let
+        ((url-request-method "POST")
+         (url-request-extra-headers
+          '(("Content-Type" . "application/json")))
+         (url-request-data (concat "{\"codeType\": \"" codeType "\", \"codeName\": \"" codeName "\", \"codeText\": \"" codeText "\"}")))
+        (with-current-buffer (url-retrieve-synchronously "https://localhost/action/codeEditorPlugin") (prog1 (buffer-string)))) "\n\n")))
+    (message responseBody)
 )
 
 (provide 'apex)
