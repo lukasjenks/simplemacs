@@ -15,32 +15,35 @@
 (require 'json)
 (require 'url)
 
+;; The following line is necessary to prevent url.el from automatically
+;; adding the header Accept-Encoding: gzip to every request (bizzare)
+(setq url-mime-encoding-string "identity")
+
 ;;;###autoload
+;; Login routine that the user must call prior to using any of the other functions
 (defun apex-login () (interactive)
-    "Login so that the user can call apex-get and apex-edit functions with proper cookie"
     (setq responseBody (nth 1 (split-string (let
         ((url-request-method "POST")
          (url-request-extra-headers
           '(("Content-Type" . "application/json")))
          (url-request-data "{\"data\": {\"username\": \"admin\", \"password\": \"12345New\"}}"))
         (with-current-buffer (url-retrieve-synchronously "https://localhost/action/loginAuthenticate") (prog1 (buffer-string)))) "\n\n")))
-    (if (cl-search "{\"status\":\"success\"" responseBody) (message "authentication successful")))
+    (if (cl-search "{\"status\":\"success\"" responseBody) (message "Authentication successful.")))
 
-(defun apex-get-logics () (interactive)
+;; Retrieves all names of the given type of code and inserts them into a new buffer called apex-[codetype]-list
+(defun apex-get-list (codeType)
+    (interactive "sWhat type of code? (reducer, logic, or rule): ")
     (setq responseBody (nth 1 (split-string (let
                        ((url-request-method "GET"))
-                     (with-current-buffer (url-retrieve-synchronously "https://localhost/action/codeEditorPlugin") (prog1 (buffer-string)))) "\n\n")))
-    (switch-to-buffer (get-buffer-create "apex-logic-list"))
-    (with-current-buffer "apex-logic-list"
-      (goto-char (point-max)) (insert responseBody)))
+                     (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?op=getlist&codetype=" codeType)) (prog1 (buffer-string)))) "\n\n")))
+    (switch-to-buffer (get-buffer-create (concat "apex-" codeType "-list")))
+    (with-current-buffer (concat "apex-" codeType "-list")
+      (goto-char (point-max)) (insert responseBody) (beginning-of-buffer) (read-only-mode)))
 
-(defun test-get-google () (interactive)
-    (setq responseBody (nth 1 (split-string (let
-                        ((url-request-method "GET"))
-                        (with-current-buffer (url-retrieve-synchronously "https://google.ca") (prog1 (buffer-string)))) "\n\n")))
-    (switch-to-buffer (get-buffer-create "google"))
-    (with-current-buffer "google"
-        (goto-char (point-max)) (insert responseBody)))
+(defun apex-get-code (codeType codeName)
+    (interactive "sWhat type of code? (reducer, logic, or rule): ")
+    (interactive (concat "sWhat is the name of the " codeType "?: "))
+)
 
 (provide 'apex)
 ;;; apex.el ends here
