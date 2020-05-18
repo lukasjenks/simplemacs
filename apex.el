@@ -19,6 +19,11 @@
 ;; adding the header Accept-Encoding: gzip to every request (bizzare)
 (setq url-mime-encoding-string "identity")
 
+(defun s-replace (old new s)
+  "Replaces OLD with NEW in S."
+  (declare (pure t) (side-effect-free t))
+  (replace-regexp-in-string (regexp-quote old) new s t t))
+
 ;;;###autoload
 ;; Login routine that the user must call prior to using any of the other functions
 (defun apex-login () (interactive)
@@ -60,11 +65,10 @@
     (setq responseBody (nth 1 (split-string (let
         ((url-request-method "POST")
          (url-request-extra-headers
-          '(("Content-Type" . "application/json")))
-         (url-request-data (concat "{\"codeType\": \"" codeType "\", \"codeName\": \"" codeName "\", \"codeText\": \"" codeText "\"}")))
-        (with-current-buffer (url-retrieve-synchronously "https://localhost/action/codeEditorPlugin") (prog1 (buffer-string)))) "\n\n")))
-    (message responseBody)
-)
+          '(("Content-Type" . "text/http")))
+         (url-request-data codeText))
+        (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))) "\n\n")))
+    (message responseBody))
 
 (provide 'apex)
 ;;; apex.el ends here
