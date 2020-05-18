@@ -48,12 +48,21 @@
 ;; Retrieves the code text given the code type and code name, and inserts it into a new js-mode buffer
 (defun apex-get-code (codeType codeName)
     (interactive "sWhat type of code? (reducer, logic, or rule): \nsWhat is the name of the code?: ")
-    (setq responseBody (nth 1 (split-string (let
+    (setq responseBody (let
                        ((url-request-method "GET"))
-                     (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?op=getcode&codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))) "\n\n")))
+                     (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?op=getcode&codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))))
     (switch-to-buffer (get-buffer-create (concat codeType "-" codeName)))
     (with-current-buffer (concat codeType "-" codeName)
-      (goto-char (point-max)) (insert responseBody) (beginning-of-buffer) (js-mode)))
+      (goto-char (point-max))
+      (insert responseBody)
+
+      ;; Remove response header
+      (goto-char (point-min))
+      (re-search-forward "^$")
+      (delete-region (+ (point) 1) (point-min))
+
+      (beginning-of-buffer)
+      (js-mode)))
 
 ;; Posts the content of the current buffer to its appropriate record in the DB
 (defun apex-post-code ()
