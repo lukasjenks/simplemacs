@@ -11,6 +11,28 @@
 
 ;; apex.el is a simple set of interactive functions which
 ;; enable the user to edit code in the apex web framework.
+
+;;; Usage Guide:
+
+;; First, you must login to the web service.  You can do that by executing:
+;; M-x a-login
+;; When you receive the message: "Authentication successful." in the minibuffer,
+;; you are ready to start using this plugin.
+
+;; How to access and edit code:
+;; M-x a-get-list
+;; Executing this and responding to its prompts will open a new buffer with
+;; a list of the names of all  either [reducers/logic/rules] in the database.
+
+;; M-x a-get-code
+;; Executing this and responding to its prompts will open a new buffer with
+;; the contents of a certain [reducer/logic/rule] given its name.  You can
+;; then edit the code in this buffer.
+
+;; M-x a-post-code
+;; Once you are done editing the code using a-get-code, use this function
+;; to post that code back in the database.
+
 ;;; Code:
 (require 'json)
 (require 'url)
@@ -19,14 +41,10 @@
 ;; adding the header Accept-Encoding: gzip to every request (bizzare)
 (setq url-mime-encoding-string "identity")
 
-(defun s-replace (old new s)
-  "Replaces OLD with NEW in S."
-  (declare (pure t) (side-effect-free t))
-  (replace-regexp-in-string (regexp-quote old) new s t t))
-
 ;;;###autoload
-;; Login routine that the user must call prior to using any of the other functions
-(defun apex-login () (interactive)
+(defun a-login ()
+    "Login routine that the user must call prior to using any of the other interactive functions."
+    (interactive)
     (setq responseBody (nth 1 (split-string (let
         ((url-request-method "POST")
          (url-request-extra-headers
@@ -35,8 +53,9 @@
         (with-current-buffer (url-retrieve-synchronously "https://localhost/action/loginAuthenticate") (prog1 (buffer-string)))) "\n\n")))
     (if (cl-search "{\"status\":\"success\"" responseBody) (message "Authentication successful.")))
 
-;; Retrieves all names of the given type of code and inserts them into a new buffer called apex-[codetype]-list
-(defun apex-get-list (codeType)
+;;;###autoload
+(defun a-get-list (codeType)
+    "Retrieve list of all given type of code (reduer, logic, or rule) and insert them into a new buffer called apex-[CODETYPE]-list, then switch to that new buffer."
     (interactive "sWhat type of code? (reducer, logic, or rule): ")
     (setq responseBody (nth 1 (split-string (let
                        ((url-request-method "GET"))
@@ -45,8 +64,9 @@
     (with-current-buffer (concat "apex-" codeType "-list")
       (goto-char (point-max)) (insert responseBody) (beginning-of-buffer) (read-only-mode)))
 
-;; Retrieves the code text given the code type and code name, and inserts it into a new js-mode buffer
-(defun apex-get-code (codeType codeName)
+;;;###autoload
+(defun a-get-code (codeType codeName)
+    "Retrieve the code text given the CODETYPE and CODENAME, insert it into a new 'js-mode' buffer, then switch to that buffer."
     (interactive "sWhat type of code? (reducer, logic, or rule): \nsWhat is the name of the code?: ")
     (setq responseBody (let
                        ((url-request-method "GET"))
@@ -64,8 +84,9 @@
       (beginning-of-buffer)
       (js-mode)))
 
-;; Posts the content of the current buffer to its appropriate record in the DB
-(defun apex-post-code ()
+;;;###autoload
+(defun a-post-code ()
+    "Post the content of the current buffer to its appropriate code record in the DB."
     (interactive)
     (setq codeType (nth 0 (split-string (buffer-name) "-")))
     (setq codeName (nth 1 (split-string (buffer-name) "-")))
