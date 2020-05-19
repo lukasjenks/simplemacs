@@ -308,10 +308,10 @@
    #+END_SRC
 ** SLIME
    #+BEGIN_SRC emacs-lisp
-   (cond
-   ((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
-   ((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
-   (setq inferior-lisp-program "sbcl")
+   ;;(cond
+   ;;((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
+   ;;((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
+   ;;(setq inferior-lisp-program "sbcl")
    #+END_SRC
 ** Org-bullets
    #+BEGIN_SRC emacs-lisp
@@ -332,8 +332,13 @@
    #+BEGIN_SRC emacs-lisp
    (global-flycheck-mode)
    #+END_SRC
+** evil-mode
+   #+BEGIN_SRC emacs-lisp
+   (require 'evil)
+   (evil-mode 1)
+   #+END_SRC
 * My packages and other personal packages
-** tldr
+** tldr & apex.el
    #+BEGIN_SRC emacs-lisp
    (load "~/.emacs.d/tldr-newsletter.el")
    ;; (require 'tldr-newsletter.el)

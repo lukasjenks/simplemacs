@@ -264,6 +264,9 @@
 
 (global-flycheck-mode)
 
+(require 'evil)
+(evil-mode 1)
+
 (load "~/.emacs.d/tldr-newsletter.el")
 ;; (require 'tldr-newsletter.el)
 (load "~/.emacs.d/apex.el")
