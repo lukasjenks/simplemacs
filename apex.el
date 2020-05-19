@@ -14,6 +14,9 @@
 
 ;;; Usage Guide:
 
+;; Replace username and password value on line 54 with the administrator
+;; username and password that you use to login normally.
+
 ;; First, you must login to the web service.  You can do that by executing:
 ;; M-x a-login
 ;; When you receive the message: "Authentication successful." in the minibuffer,
@@ -49,7 +52,7 @@
         ((url-request-method "POST")
          (url-request-extra-headers
           '(("Content-Type" . "application/json")))
-         (url-request-data "{\"data\": {\"username\": \"admin\", \"password\": \"12345New\"}}"))
+         (url-request-data "{\"data\": {\"username\": \"putusernamehere\", \"password\": \"putpasswordhere\"}}"))
         (with-current-buffer (url-retrieve-synchronously "https://localhost/action/loginAuthenticate") (prog1 (buffer-string)))) "\n\n")))
     (if (cl-search "{\"status\":\"success\"" responseBody) (message "Authentication successful.")))
 
