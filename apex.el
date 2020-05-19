@@ -14,7 +14,7 @@
 
 ;;; Usage Guide:
 
-;; Replace username and password value on line 54 with the administrator
+;; Replace username and password value on line 55 with the administrator
 ;; username and password that you use to login normally.
 
 ;; First, you must login to the web service.  You can do that by executing:
