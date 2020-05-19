@@ -53,13 +53,13 @@
 ** Frame package configuration
    #+BEGIN_SRC emacs-lisp
    (use-package frame
-  :ensure nil
-  :custom
-  (initial-frame-alist (quote ((fullscreen . maximized))))
-  :config
-  (blink-cursor-mode 1)
-  (when (member "Source Code Pro" (font-family-list))
-    (set-frame-font "Source Code Pro-12:weight=regular" t t)))
+   :ensure nil
+   :custom
+   (initial-frame-alist (quote ((fullscreen . maximized))))
+   :config
+   (blink-cursor-mode 1)
+   (when (member "Source Code Pro" (font-family-list))
+   (set-frame-font "Source Code Pro-12:weight=regular" t t)))
    #+END_SRC
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
@@ -335,7 +335,9 @@
 ** evil-mode
    #+BEGIN_SRC emacs-lisp
    (require 'evil)
-   (evil-mode 1)
+   (evil-mode t)
+   (define-key evil-normal-state-map "gT" 'tabbar-backward)
+   (define-key evil-normal-state-map "gt" 'tabbar-forward)
    #+END_SRC
 * My packages and other personal packages
 ** tldr & apex.el

@@ -55,7 +55,7 @@
         ((url-request-method "POST")
          (url-request-extra-headers
           '(("Content-Type" . "application/json")))
-         (url-request-data "{\"data\": {\"username\": \"usernamehere\", \"password\": \"passwordhere\"}}"))
+         (url-request-data "{\"data\": {\"username\": \"admin\", \"password\": \"12345New\"}}"))
         (with-current-buffer (url-retrieve-synchronously "https://localhost/action/loginAuthenticate") (prog1 (buffer-string)))) "\n\n")))
     (if (cl-search "{\"status\":\"success\"" responseBody) (message "Authentication successful.")))
 

@@ -40,7 +40,7 @@
 :config
 (blink-cursor-mode 1)
 (when (member "Source Code Pro" (font-family-list))
-  (set-frame-font "Source Code Pro-12:weight=regular" t t)))
+(set-frame-font "Source Code Pro-12:weight=regular" t t)))
 
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
@@ -248,10 +248,10 @@
 (global-set-key [f8] 'neotree-toggle)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
-(cond
-((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
-((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
-(setq inferior-lisp-program "sbcl")
+;;(cond
+;;((string-equal system-type "windows-nt") (load (expand-file-name "c:/Users/ljenks/quicklisp/slime-helper.el")))
+;;((string-equal system-type "gnu/linux") (load (expand-file-name "~/quicklisp/slime-helper.el"))))
+;;(setq inferior-lisp-program "sbcl")
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -265,7 +265,9 @@
 (global-flycheck-mode)
 
 (require 'evil)
-(evil-mode 1)
+(evil-mode t)
+(define-key evil-normal-state-map "gt" 'tabbar-backward)
+(define-key evil-normal-state-map "gT" 'tabbar-forward)
 
 (load "~/.emacs.d/tldr-newsletter.el")
 ;; (require 'tldr-newsletter.el)
