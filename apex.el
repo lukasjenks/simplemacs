@@ -14,7 +14,10 @@
 
 ;;; Usage Guide:
 
-;; Replace username and password value on line 55 with the administrator
+;; First, place this file in your .emacs.d directory.  Then, in init.el
+;; add the following Lisp form: (load "~/.emacs.d/apex.el")
+
+;; Replace username and password value on line 58 with the administrator
 ;; username and password that you use to login normally.
 
 ;; First, you must login to the web service.  You can do that by executing:
@@ -52,7 +55,7 @@
         ((url-request-method "POST")
          (url-request-extra-headers
           '(("Content-Type" . "application/json")))
-         (url-request-data "{\"data\": {\"username\": \"putusernamehere\", \"password\": \"putpasswordhere\"}}"))
+         (url-request-data "{\"data\": {\"username\": \"usernamehere\", \"password\": \"passwordhere\"}}"))
         (with-current-buffer (url-retrieve-synchronously "https://localhost/action/loginAuthenticate") (prog1 (buffer-string)))) "\n\n")))
     (if (cl-search "{\"status\":\"success\"" responseBody) (message "Authentication successful.")))
 
