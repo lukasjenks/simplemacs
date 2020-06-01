@@ -3,7 +3,7 @@
 
 (setq url-cookie-storage
  '(("localhost"
-  [url-cookie "token" "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJTeXN0ZW0gIiwibGFzdG5hbWUiOiJBZG1pbiIsInBhcmVudGNvbnRhY3RpZCI6MSwiaWF0IjoxNTg5NjY2NjAzLCJleHAiOjE1ODk3NTMwMDN9._FqrAXYZ-r__MGEkQ0E5qom2zmkEC-U8ZdWSdS7tDZo" "Sun May 17 00:03:23 2020 GMT" "/" "localhost" nil]))
+  [url-cookie "token" "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJhIiwibGFzdG5hbWUiOiJnIiwicGFyZW50Y29udGFjdGlkIjoxLCJpYXQiOjE1OTA3ODk5OTAsImV4cCI6MTU5MDg3NjM5MCwiaXNzIjoiQ1BBIEFsYmVydGEifQ.R2dUER4veYZpcVj2JjwB_CXMimQanASbPzsnkqQljhETrDUpCsoYbeCrPfXSPmtxGq-moojFfgo8uY7iGryblsCDutqClDI52vLJC3w1TwtX9kpAomsGEXsJ0VBtjRx0vCtJuhWOXzwgt--dKZW6m7zn3B4TL8eREgucLW1km9MaeJ8e6WdMoWNfcg3ZMbnUJML7cXC8E8acGQxEe7eE46cPGe8TOf6EXyTQZSg4cW9BNu2t3DqmqMkllwdX8M44X2FwdtfeOR_vWZTCSQr6ZmyFlalYAzLq9vUSXZmc-wmmARTyzMTg_Hr_6clarUzy5W-6zSdN1ZbVi0dyw8VhsA" "Sat May 30 00:06:30 2020 GMT" "/" "localhost" nil]))
 )
 (setq url-cookie-secure-storage
  'nil)

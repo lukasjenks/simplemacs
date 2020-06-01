@@ -55,9 +55,19 @@
         ((url-request-method "POST")
          (url-request-extra-headers
           '(("Content-Type" . "application/json")))
-         (url-request-data "{\"data\": {\"username\": \"admin\", \"password\": \"12345New\"}}"))
+         (url-request-data "{\"data\": {\"username\": \"usernamehere\", \"password\": \"passwordhere\"}}"))
         (with-current-buffer (url-retrieve-synchronously "https://localhost/action/loginAuthenticate") (prog1 (buffer-string)))) "\n\n")))
     (if (cl-search "{\"status\":\"success\"" responseBody) (message "Authentication successful.")))
+
+(defun a-test ()
+  (interactive)
+      (setq responseBody (nth 1 (split-string (let
+        ((url-request-method "POST")
+         (url-request-extra-headers
+          '(("Content-Type" . "application/json")))
+         (url-request-data "{\"data\": {\"username\": \"admin\", \"password\": \"12345New\"}}"))
+        (with-current-buffer (url-retrieve-synchronously "https://localhost/rules/save") (prog1 (buffer-string)))) "\n\n")))
+      (message responseBody))
 
 ;;;###autoload
 (defun a-get-list (codeType)
@@ -104,7 +114,26 @@
           '(("Content-Type" . "text/http")))
          (url-request-data codeText))
         (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))) "\n\n")))
-    (message responseBody))
+    ;; (if (string= codeType "rule")
+    ;;     (with-temp-buffer
+    ;;         (find-file "~/Documents/Work/camms-portal/lib/rules/index.js")
+    ;;         (setq sysBeginString (concat "/*sys-begin-rules-" codeName "*/
+	;; 		null
+	;; 		Rules.prototype.mypreferencesSubmitResponses = function(input){
+	;; 			var r = this;
+	;; 			return new Promise((resolve, reject) => {
+	;; 				try{
+	;; 					"))
+    ;;         (setq sysEndString (concat "					}catch(e){
+	;; 					util.handleError(e).then(() => { reject(e); })
+	;; 				}
+	;; 			});
+	;; 		};/*sys-end-rules-" codeName "*/"))
+    ;;         (save-buffer 0)
+    ;;         (kill-buffer)))
+    (if (string= responseBody "[]")
+                 (message "Successfully posted code to the DB.")
+                 (message (concat "An error occured: " responseBody))))
 
 (provide 'apex)
 ;;; apex.el ends here

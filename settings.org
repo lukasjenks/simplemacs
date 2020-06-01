@@ -334,10 +334,10 @@
    #+END_SRC
 ** evil-mode
    #+BEGIN_SRC emacs-lisp
-   (require 'evil)
-   (evil-mode t)
-   (define-key evil-normal-state-map "gT" 'tabbar-backward)
-   (define-key evil-normal-state-map "gt" 'tabbar-forward)
+   ;;(require 'evil)
+   ;;(evil-mode t)
+   ;;(define-key evil-normal-state-map "gT" 'tabbar-backward)
+   ;;(define-key evil-normal-state-map "gt" 'tabbar-forward)
    #+END_SRC
 * My packages and other personal packages
 ** tldr & apex.el
