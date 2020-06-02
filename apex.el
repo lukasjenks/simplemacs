@@ -110,9 +110,9 @@
 
     (if (string= codeType "rule")
         (progn
-        (setq ruleID (nth 1 (split-string (let
+        (setq ruleID (string-to-number (nth 1 (split-string (let
                    ((url-request-method "GET"))
-                 (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorGetRuleID?codename=codeEditorTestRule")) (prog1 (buffer-string)))) "\n\n")))
+                 (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorGetRuleID?codename=" codeName)) (prog1 (buffer-string)))) "\n\n"))))
         (setq responseBody (nth 1 (split-string (let
             ((url-request-method "POST")
              (url-request-extra-headers

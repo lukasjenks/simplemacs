@@ -264,10 +264,10 @@
 
 (global-flycheck-mode)
 
-;;(require 'evil)
-;;(evil-mode t)
-;;(define-key evil-normal-state-map "gT" 'tabbar-backward)
-;;(define-key evil-normal-state-map "gt" 'tabbar-forward)
+(require 'evil)
+(evil-mode t)
+(define-key evil-normal-state-map "gT" 'tabbar-backward)
+(define-key evil-normal-state-map "gt" 'tabbar-forward)
 
 (load "~/.emacs.d/tldr-newsletter.el")
 ;; (require 'tldr-newsletter.el)
