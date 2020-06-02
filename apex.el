@@ -108,32 +108,33 @@
     (setq codeName (nth 1 (split-string (buffer-name) "-")))
     (setq codeText (buffer-substring-no-properties (point-min) (point-max)))
 
-    (setq responseBody (nth 1 (split-string (let
-        ((url-request-method "POST")
-         (url-request-extra-headers
-          '(("Content-Type" . "text/http")))
-         (url-request-data codeText))
-        (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))) "\n\n")))
-    ;; (if (string= codeType "rule")
-    ;;     (with-temp-buffer
-    ;;         (find-file "~/Documents/Work/camms-portal/lib/rules/index.js")
-    ;;         (setq sysBeginString (concat "/*sys-begin-rules-" codeName "*/
-	;; 		null
-	;; 		Rules.prototype.mypreferencesSubmitResponses = function(input){
-	;; 			var r = this;
-	;; 			return new Promise((resolve, reject) => {
-	;; 				try{
-	;; 					"))
-    ;;         (setq sysEndString (concat "					}catch(e){
-	;; 					util.handleError(e).then(() => { reject(e); })
-	;; 				}
-	;; 			});
-	;; 		};/*sys-end-rules-" codeName "*/"))
-    ;;         (save-buffer 0)
-    ;;         (kill-buffer)))
-    (if (string= responseBody "[]")
+    (if (string= codeType "rule")
+        (progn
+        (setq ruleID (nth 1 (split-string (let
+                   ((url-request-method "GET"))
+                 (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorGetRuleID?codename=codeEditorTestRule")) (prog1 (buffer-string)))) "\n\n")))
+        (setq responseBody (nth 1 (split-string (let
+            ((url-request-method "POST")
+             (url-request-extra-headers
+              '(("Content-Type" . "application/json")))
+             (url-request-data (json-encode `(("id" . ,ruleID) ("name" . ,codeName) ("code" . ,codeText)))
+                               ))
+            (with-current-buffer (url-retrieve-synchronously "https://localhost/rules/save") (prog1 (buffer-string)))) "\n\n")))
+        (if (string= responseBody "[1]")
+            (message "Successfully posted code to the DB.")
+            (message (concat "An error occured: " responseBody))))
+
+        (progn (setq responseBody (nth 1 (split-string (let
+            ((url-request-method "POST")
+             (url-request-extra-headers
+              '(("Content-Type" . "text/http")))
+             (url-request-data codeText))
+            (with-current-buffer (url-retrieve-synchronously (concat "https://localhost/action/codeEditorPlugin?codetype=" codeType "&codename=" codeName)) (prog1 (buffer-string)))) "\n\n")))
+                (if (string= responseBody "[]")
                  (message "Successfully posted code to the DB.")
-                 (message (concat "An error occured: " responseBody))))
+                 (message (concat "An error occured: " responseBody)))
+        ))
+)
 
 (provide 'apex)
 ;;; apex.el ends here
