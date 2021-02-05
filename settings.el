@@ -2,8 +2,7 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-  (package-initialize))
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
 
 (setq initial-major-mode 'text-mode)
 
@@ -41,6 +40,8 @@
 (blink-cursor-mode 1)
 (when (member "Source Code Pro" (font-family-list))
 (set-frame-font "Source Code Pro-12:weight=regular" t t)))
+
+(global-auto-revert-mode)
 
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
@@ -264,10 +265,10 @@
 
 (global-flycheck-mode)
 
-(require 'evil)
-(evil-mode t)
-(define-key evil-normal-state-map "gT" 'tabbar-backward)
-(define-key evil-normal-state-map "gt" 'tabbar-forward)
+;(require 'evil)
+;(evil-mode t)
+;(define-key evil-normal-state-map "gT" 'tabbar-backward)
+;(define-key evil-normal-state-map "gt" 'tabbar-forward)
 
 (load "~/.emacs.d/tldr-newsletter.el")
 ;; (require 'tldr-newsletter.el)

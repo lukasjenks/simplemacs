@@ -4,8 +4,7 @@
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-  (package-initialize))
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
 #+END_SRC
 * Set default buffer settings
 ** Set initial buffer to text-mode
@@ -61,6 +60,10 @@
    (when (member "Source Code Pro" (font-family-list))
    (set-frame-font "Source Code Pro-12:weight=regular" t t)))
    #+END_SRC
+** Automatically update buffer when file is changed on disk
+#+BEGIN_SRC emacs-lisp
+(global-auto-revert-mode)
+#+END_SRC
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
@@ -334,10 +337,10 @@
    #+END_SRC
 ** evil-mode
    #+BEGIN_SRC emacs-lisp
-   (require 'evil)
-   (evil-mode t)
-   (define-key evil-normal-state-map "gT" 'tabbar-backward)
-   (define-key evil-normal-state-map "gt" 'tabbar-forward)
+   ;(require 'evil)
+   ;(evil-mode t)
+   ;(define-key evil-normal-state-map "gT" 'tabbar-backward)
+   ;(define-key evil-normal-state-map "gt" 'tabbar-forward)
    #+END_SRC
 * My packages and other personal packages
 ** tldr & apex.el

@@ -2,11 +2,11 @@
 ;; Automatically generated file!!! DO NOT EDIT!!!
 
 (setq url-cookie-storage
- '(("localhost"
-  [url-cookie "token" "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJhIiwibGFzdG5hbWUiOiJnIiwicGFyZW50Y29udGFjdGlkIjoxLCJpYXQiOjE1OTA3ODk5OTAsImV4cCI6MTU5MDg3NjM5MCwiaXNzIjoiQ1BBIEFsYmVydGEifQ.R2dUER4veYZpcVj2JjwB_CXMimQanASbPzsnkqQljhETrDUpCsoYbeCrPfXSPmtxGq-moojFfgo8uY7iGryblsCDutqClDI52vLJC3w1TwtX9kpAomsGEXsJ0VBtjRx0vCtJuhWOXzwgt--dKZW6m7zn3B4TL8eREgucLW1km9MaeJ8e6WdMoWNfcg3ZMbnUJML7cXC8E8acGQxEe7eE46cPGe8TOf6EXyTQZSg4cW9BNu2t3DqmqMkllwdX8M44X2FwdtfeOR_vWZTCSQr6ZmyFlalYAzLq9vUSXZmc-wmmARTyzMTg_Hr_6clarUzy5W-6zSdN1ZbVi0dyw8VhsA" "Sat May 30 00:06:30 2020 GMT" "/" "localhost" nil]))
-)
-(setq url-cookie-secure-storage
  'nil)
+(setq url-cookie-secure-storage
+ '(("localhost"
+  [url-cookie "token" "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJTeXN0ZW0iLCJsYXN0bmFtZSI6IkFkbWluIiwicGFyZW50Y29udGFjdGlkIjoxLCJpYXQiOjE2MDM5ODY1NTcsImV4cCI6MTYwNDA3Mjk1NywiaXNzIjoiQ1BBIEFsYmVydGEifQ.NYtFUJXxfrkTLaJKX8YjdTScL8oJzTbUaJ50NL4B7X3evCSDR05sFL6D0S3fnmIXdNSGi6VCqoD_XQrSkerPGMNwYFXixEc8U8RjQgFxWK6s1X1k5Nm9ytGpjPsfs1ZzvvvDINTzwz4Ul7jJ2xFPCiGL44-34qqa_bqH4vo6Lh2K_sK_3WxOzGT6JewKGsNTyi3cFb-oNPrCyAF1N2YDdJqy2_4NW1rchXZveh_7YeXx9uwuCX4CXOXAhM-3nsiBUUAKm4ll12evmxdftTQk46kl_rIl4ocDjbXOZ-wJHAFwZIwnruIrSTl9ZFzK1el7ReYy3BLGp269VAEDay6ohA" "Thu Oct 29 17:49:17 2020 GMT" "/" "localhost" t]))
+)
 
 ;; Local Variables:
 ;; version-control: never

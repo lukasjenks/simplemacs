@@ -15,9 +15,7 @@
 
 ;;; Code:
 (require 'json)
-;; (require 'url)
-;; (require 'image)
-;; (require 'browse-url)
+(require 'cl)
 
 ;;;###autoload
 (defun tldr-newsletter () (interactive)
@@ -36,16 +34,19 @@
         (insert
             (shell-command-to-string (concat curl-cmd (get-url-suffix))))
 
-        (replace-in-buffer "tldr-newsletter" "/sponsor" "https://www.tldrnewsletter.com/sponsor")
-        (replace-in-buffer "tldr-newsletter" "/privacy" "https://www.tldrnewsletter.com/privacy")
-        (replace-in-buffer "tldr-newsletter" "/terms" "https://www.tldrnewsletter.com/terms")
-        (replace-in-buffer "tldr-newsletter" "/archives" "https://www.tldrnewsletter.com/archives")
-        (replace-in-buffer "tldr-newsletter" "/rss" "https://www.tldrnewsletter.com/rss")
-
-        (replace-in-buffer "tldr-newsletter" "Big Tech & Startups" "<b><u>Big Tech & Startups</u></b>")
-        (replace-in-buffer "tldr-newsletter" "Science & Cutting Edge Technology" "<b><u>Science & Cutting Edge Technology</b></u>")
-        (replace-in-buffer "tldr-newsletter" "Programming, Design & Data Science" "<b><u>Programming, Design & Data Science</b></u>")
-        (replace-in-buffer "tldr-newsletter" "Miscellaneous" "<b><u>Miscellaneous</b></u>")
+        (setq replace-strings
+            '(("/sponsor" . "https://www.tldrnewsletter.com/sponsor")
+              ("/privacy" . "https://www.tldrnewsletter.com/privacy")
+              ("/terms" . "https://www.tldrnewsletter.com/terms")
+              ("/archives" . "https://www.tldrnewsletter.com/archives")
+              ("/rss" . "https://www.tldrnewsletter.com/rss")
+              ("Big Tech & Startups" . "<b><u>Big Tech & Startups</u></b>")
+              ("Science & Cutting Edge Technology" . "<b><u>Science & Cutting Edge Technology</b></u>")
+              ("Programming, Design & Data Science" . "<b><u>Programming, Design & Data Science</b></u>")
+              ("Miscellaneous" . "<b><u>Miscellaneous</b></u>")))
+        
+        (loop for (old-string . new-string) in replace-strings
+        do (replace-in-buffer "tldr-newsletter" old-string new-string))
 
         ;; Render HTML content so it is readable by the user
         (shr-render-region (point-min) (point-max))
