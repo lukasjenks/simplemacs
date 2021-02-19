@@ -301,12 +301,11 @@
    ;(define-key evil-normal-state-map "gT" 'tabbar-backward)
    ;(define-key evil-normal-state-map "gt" 'tabbar-forward)
    #+END_SRC
-* My packages and other personal packages
+* Load personal plugins not in melpa repos & functions
 ** tldr & apex.el
    #+BEGIN_SRC emacs-lisp
-   (load "~/.emacs.d/tldr-newsletter.el")
-   ;; (require 'tldr-newsletter.el)
-   (load "~/.emacs.d/apex.el")
+   (load "~/.emacs.d/plugins/tldr-newsletter.el")
+   (load "~/.emacs.d/plugins/apex.el")
    #+END_SRC
 ** rename-buffer
    #+BEGIN_SRC emacs-lisp
