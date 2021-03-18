@@ -26,11 +26,18 @@
 (electric-pair-mode 1)
 
 (add-hook 'prog-mode-hook #'hs-minor-mode)
-(defun toggle-fold ()
+(defun show-fold ()
+      (interactive)
+      (save-excursion
+	(hs-toggle-hiding)))
+(defun hide-fold ()
       (interactive)
       (save-excursion
 	(end-of-line)
 	(hs-toggle-hiding)))
+;; Set M-p key cmd to toggle-fold (collapse function or block)
+(global-set-key (kbd "M-p") 'hide-fold)
+(global-set-key (kbd "M-o") 'show-fold)
 
 (use-package frame
 :ensure nil
