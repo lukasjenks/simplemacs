@@ -1,14 +1,0 @@
-;; Emacs-W3 HTTP cookies file
-;; Automatically generated file!!! DO NOT EDIT!!!
-
-(setq url-cookie-storage
- 'nil)
-(setq url-cookie-secure-storage
- '(("localhost"
-  [url-cookie "token" "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEwMDAwMDAsInVzZXJuYW1lIjoiYWRtaW4iLCJmaXJzdG5hbWUiOiJFbmcuICIsImxhc3RuYW1lIjoiQ09OUk9ZIiwicGFyZW50Y29udGFjdGlkIjoxLCJpYXQiOjE2MTYxNjg1MTUsImV4cCI6MTYxNjI1NDkxNSwiaXNzIjoiQ1BBIEFsYmVydGEifQ.I8MXzNx4OZWAHsQFpCTmDXbQLGzEEBqmvmb7cQi7aDYSt96KoCuLfAufiWcZfd0PlB2QEjceo0OUUGqH52bY56cgbSaLJVhFcG3sTFRy9Z3EcyBoEW8JfbdUqvYz0CND8F_4V8nHIz6ChqAvfly_qkjBh8uYntHyZj088dx_yUm_idJ7bNz4UKEYgzfwcCgHwmP5eX5dh8W75MARLxO6lv8EWTaH_YDyePtZ4MRUf6yvQgrGVnf1OZpBAgh6uF5Ml_dqbVcB_RPQ8i9wMjYDq4jM47TC0Xpbps1tGyhqfMeSjAAIu_yR9dCm2SZ2JQGKLTypOcOTeLQeq6S8TGT4LA" "Fri Mar 19 17:41:55 2021 GMT" "/" "localhost" t]))
-)
-
-;; Local Variables:
-;; version-control: never
-;; no-byte-compile: t
-;; End:
