@@ -1,7 +1,0 @@
-* Default
-** camms-portal
- - path :: ~/Documents/Work/camms-portal
-** projects
- - path :: ~/Documents/Projects
-** emacs-config
- - path :: ~/.emacs.d
