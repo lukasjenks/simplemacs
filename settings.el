@@ -112,11 +112,11 @@
 ;; (OPTIONAL) Visualize tabs as a pipe character - "|"
 ;; This will also show trailing characters as they are useful to spot.
 (setq whitespace-style '(face tabs tab-mark trailing))
-(custom-set-faces
- '(whitespace-tab ((t (:foreground "#636363")))))
-(setq whitespace-display-mappings
-  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
-(global-whitespace-mode) ; Enable whitespace mode everywhere
+;;(custom-set-faces
+;; '(whitespace-tab ((t (:foreground "#636363")))))
+;;(setq whitespace-display-mappings
+;;  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
+;;(global-whitespace-mode) ; Enable whitespace mode everywhere
 ; END TABS CONFIG
 
 (setq scroll-conservatively 101)
