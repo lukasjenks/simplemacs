@@ -1,8 +1,8 @@
 (when (>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (package-initialize))
 
 (setq initial-major-mode 'text-mode)
 
@@ -300,5 +300,7 @@
     ;;(lookup-key (current-global-map) (kbd "C-u C-x TAB")))
 ;;(define-key (current-global-map) (kbd "M-x unindent")
     ;;(lookup-key (current-global-map) (kbd "C-u -4 M-x indent-rigidly")))
+
+(global-set-key (kbd "C-M-j") 'apply-macro-to-region-lines)
 
 (setq x-select-enable-clipboard t)

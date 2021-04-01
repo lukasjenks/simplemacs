@@ -2,9 +2,9 @@
 #+BEGIN_SRC emacs-lisp
 (when (>= emacs-major-version 24)
   (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+  (package-initialize))
 #+END_SRC
 * Set default buffer settings
 ** Set initial buffer to text-mode
@@ -203,7 +203,7 @@
    #+BEGIN_SRC emacs-lisp
    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
    #+END_SRC
-** Centaur tabs
+** Tabs
    #+BEGIN_SRC emacs-lisp
 			   ;; (require 'centaur-tabs)
 			   ;; (centaur-tabs-mode t)
@@ -380,6 +380,10 @@
        ;;(lookup-key (current-global-map) (kbd "C-u C-x TAB")))
    ;;(define-key (current-global-map) (kbd "M-x unindent")
        ;;(lookup-key (current-global-map) (kbd "C-u -4 M-x indent-rigidly")))
+   #+END_SRC
+** Set keybinding for apply-macro-to-region-lines
+   #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "C-M-(") 'apply-macro-to-region-lines)
    #+END_SRC
 * Copy/paste settings
 ** Enable copy/paste in/out of emacs

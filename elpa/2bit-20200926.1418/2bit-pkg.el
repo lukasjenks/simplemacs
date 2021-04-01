@@ -1,0 +1,2 @@
+;;; Generated package description from /home/lukas/.emacs.d/elpa/2bit-20200926.1418/2bit.el  -*- no-byte-compile: t -*-
+(define-package "2bit" "20200926.1418" "Library for reading data from 2bit files" '((emacs "24.3")) :commit "69b4ec1d6d2ad95c9e59dacb43224abbec7a8989" :authors '(("Dave Pearson" . "davep@davep.org")) :maintainer '("Dave Pearson" . "davep@davep.org") :keywords '("files" "data") :url "https://github.com/davep/2bit.el")
