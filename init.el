@@ -109,3 +109,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(whitespace-tab ((t (:foreground "#636363")))))
+(put 'upcase-region 'disabled nil)

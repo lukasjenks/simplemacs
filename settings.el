@@ -301,6 +301,6 @@
 ;;(define-key (current-global-map) (kbd "M-x unindent")
     ;;(lookup-key (current-global-map) (kbd "C-u -4 M-x indent-rigidly")))
 
-(global-set-key (kbd "C-M-j") 'apply-macro-to-region-lines)
+(global-set-key (kbd "C-M-(") 'apply-macro-to-region-lines)
 
 (setq x-select-enable-clipboard t)
