@@ -33,7 +33,8 @@
         ;; Insert latest tldr newsletter HTML webpage into the buffer
         (setq url-suffix (get-url-suffix))
         (insert
-            (shell-command-to-string (concat curl-cmd url-suffix)))
+         ;;"[\u1F600-\u1F6FF]"
+            (replace-regexp-in-string "<img.+/>" "" (shell-command-to-string (concat curl-cmd url-suffix))))
 
         (setq replace-strings
             '(("/sponsor" . "https://tldr.tech/sponsor")
@@ -53,6 +54,7 @@
         (shr-render-region (point-min) (point-max))
         (beginning-of-buffer)
         (message (concat "Retrieved newsletter from " url-suffix))
+        (emojify-mode 1)
         (read-only-mode 1)))
 
 ;; This function takes the name of a buffer, a string to replace, and a replacement string,
