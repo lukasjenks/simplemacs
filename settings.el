@@ -41,8 +41,6 @@
 
 (use-package frame
 :ensure nil
-:custom
-(initial-frame-alist (quote ((fullscreen . maximized))))
 :config
 (blink-cursor-mode 1)
 (when (member "Source Code Pro" (font-family-list))
@@ -268,9 +266,39 @@
 ;; (global-auto-complete-mode t)
 ;; (ac-linum-workaround)
 
-(add-hook 'after-init-hook 'global-company-mode)
+;;(add-hook 'after-init-hook 'global-company-mode)
 
-(global-flycheck-mode)
+;;(global-flycheck-mode)
+
+(use-package lsp-mode
+   :init
+   ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+   (setq lsp-keymap-prefix "C-l")
+   :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+	  (python-mode . (lambda () (require 'lsp-pyright) (lsp)))
+	  (js-mode . lsp)
+	  ;; if you want which-key integration
+	  (lsp-mode . lsp-enable-which-key-integration))
+   :commands lsp)
+
+ ;; optionally
+ (use-package lsp-ui :commands lsp-ui-mode)
+ ;; if you are helm user
+ (use-package helm-lsp :commands helm-lsp-workspace-symbol)
+ ;; optionally if you want to use debugger
+ (use-package dap-mode)
+ ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
+
+ ;; optional if you want which-key integration
+ (use-package which-key
+     :config
+ (which-key-mode))
+
+ ;; (use-package lsp-pyright
+ ;;   :ensure t
+ ;;   :hook (python-mode . (lambda ()
+ ;;    		   (require 'lsp-pyright)
+ ;;    		   (lsp))))  ; or lsp-deferred
 
 ;(require 'evil)
 ;(evil-mode t)
@@ -301,6 +329,18 @@
 ;;(define-key (current-global-map) (kbd "M-x unindent")
     ;;(lookup-key (current-global-map) (kbd "C-u -4 M-x indent-rigidly")))
 
-(global-set-key (kbd "C-M-j") 'apply-macro-to-region-lines)
+(global-set-key (kbd "C-M-x") 'apply-macro-to-region-lines)
+(global-set-key (kbd "C-M-q") 'recover-this-file)
+(bind-key "M-n" 'name-last-kbd-macro)
+(bind-key "M-I" 'insert-kbd-macro)
+(bind-key "M-P" 'json-pretty-print)
 
 (setq x-select-enable-clipboard t)
+
+(add-to-list 'load-path "/path/to/auto-package-update")
+(require 'auto-package-update)
+(setq auto-package-update-prompt-before-update t)
+(auto-package-update-at-time "13:00")
+
+(when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
