@@ -11,7 +11,7 @@
 
 ;; tldr-newsletter.el is a simple set of interactive functions which
 ;; enable the user to retrieve and read tldr-newsletters from
-;; https://www.tldrnewsletter.com
+;; https://www.tldr.tech
 
 ;;; Code:
 (require 'json)
@@ -26,20 +26,22 @@
 
         (cond
             ((string-equal system-type "windows-nt")
-                (setq curl-cmd "C:/Windows/System32/curl -s https://www.tldrnewsletter.com/archives/"))
+                (setq curl-cmd "C:/Windows/System32/curl -s https://tldr.tech/newsletter/"))
             ((string-equal system-type "gnu/linux")
-                (setq curl-cmd "/usr/bin/curl -s https://www.tldrnewsletter.com/archives/")))
+                (setq curl-cmd "/usr/bin/curl -s https://tldr.tech/newsletter/")))
 
         ;; Insert latest tldr newsletter HTML webpage into the buffer
+        (setq url-suffix (get-url-suffix))
         (insert
-            (shell-command-to-string (concat curl-cmd (get-url-suffix))))
+         ;;"[\u1F600-\u1F6FF]"
+            (replace-regexp-in-string "<img.+/>" "" (shell-command-to-string (concat curl-cmd url-suffix))))
 
         (setq replace-strings
-            '(("/sponsor" . "https://www.tldrnewsletter.com/sponsor")
-              ("/privacy" . "https://www.tldrnewsletter.com/privacy")
-              ("/terms" . "https://www.tldrnewsletter.com/terms")
-              ("/archives" . "https://www.tldrnewsletter.com/archives")
-              ("/rss" . "https://www.tldrnewsletter.com/rss")
+            '(("/sponsor" . "https://tldr.tech/sponsor")
+              ("/privacy" . "https://tldr.tech/privacy")
+              ("/terms" . "https://tldr.tech/terms")
+              ("/archives" . "https://tldr.tech/archives")
+              ("/rss" . "https://tldr.tech/rss")
               ("Big Tech & Startups" . "<b><u>Big Tech & Startups</u></b>")
               ("Science & Cutting Edge Technology" . "<b><u>Science & Cutting Edge Technology</b></u>")
               ("Programming, Design & Data Science" . "<b><u>Programming, Design & Data Science</b></u>")
@@ -51,6 +53,8 @@
         ;; Render HTML content so it is readable by the user
         (shr-render-region (point-min) (point-max))
         (beginning-of-buffer)
+        (message (concat "Retrieved newsletter from " url-suffix))
+        (emojify-mode 1)
         (read-only-mode 1)))
 
 ;; This function takes the name of a buffer, a string to replace, and a replacement string,
@@ -91,8 +95,8 @@
                 (setq time-list (list (nth 5 time-list) (nth 4 time-list) (nth 3 time-list)))))))
     (setq url-suffix
         (concat
-            (number-to-string (nth 0 time-list))
-            (format-number (nth 1 time-list))
+            (number-to-string (nth 0 time-list)) "-"
+            (format-number (nth 1 time-list)) "-"
             (format-number (nth 2 time-list)))))
 
 (provide 'tldr-newsletter)

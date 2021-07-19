@@ -146,11 +146,6 @@
    ;; (OPTIONAL) Visualize tabs as a pipe character - "|"
    ;; This will also show trailing characters as they are useful to spot.
    (setq whitespace-style '(face tabs tab-mark trailing))
-   ;;(custom-set-faces
-   ;; '(whitespace-tab ((t (:foreground "#636363")))))
-   ;;(setq whitespace-display-mappings
-   ;;  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
-   ;;(global-whitespace-mode) ; Enable whitespace mode everywhere
    ; END TABS CONFIG
    #+END_SRC
 * Scrolling settings
@@ -380,6 +375,12 @@
    ;(define-key evil-normal-state-map "gT" 'tabbar-backward)
    ;(define-key evil-normal-state-map "gt" 'tabbar-forward)
    #+END_SRC
+** emojify
+   #+BEGIN_SRC emacs-lisp
+   (add-hook 'after-init-hook #'global-emojify-mode)
+   (use-package emojify
+  :hook (after-init . global-emojify-mode))
+   #+END_SRC
 * Load personal plugins not in melpa repos & functions
 ** tldr & apex.el
    #+BEGIN_SRC emacs-lisp
@@ -420,6 +421,17 @@
    (bind-key "M-I" 'insert-kbd-macro)
    (bind-key "M-P" 'json-pretty-print)
    #+END_SRC
+* Performance Settings
+** Optimize for very long lines
+*** Eliminate constant scanning of extremely long lines performed by emacs by default
+#+BEGIN_SRC emacs-lisp
+(setq bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
+#+END_SRC
+*** Enable so-long mode for minified files to use fundamental mode when opened
+#+BEGIN_SRC emacs-lisp
+(global-so-long-mode 1)
+#+END_SRC
 * Copy/paste settings
 ** Enable copy/paste in/out of emacs
    #+BEGIN_SRC emacs-lisp
