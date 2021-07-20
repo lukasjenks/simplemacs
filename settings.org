@@ -152,6 +152,7 @@
 ** Move one line when cursor exits view
    #+BEGIN_SRC emacs-lisp
    (setq scroll-conservatively 101)
+   (org-reload)
    #+END_SRC
 ** Move one line when scrolling with mouse
    #+BEGIN_SRC emacs-lisp
@@ -343,7 +344,7 @@
 	;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
 	(setq lsp-keymap-prefix "C-l")
 	:hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	       (python-mode . (lambda () (require 'lsp-pyright) (lsp)))
+	       (python-mode . lsp)
 	       (js-mode . lsp)
 	       ;; if you want which-key integration
 	       (lsp-mode . lsp-enable-which-key-integration))
@@ -362,11 +363,11 @@
 	  :config
       (which-key-mode))
 
-      ;; (use-package lsp-pyright
-      ;;   :ensure t
-      ;;   :hook (python-mode . (lambda ()
-      ;;    		   (require 'lsp-pyright)
-      ;;    		   (lsp))))  ; or lsp-deferred
+      (use-package lsp-pyright
+         :ensure t
+         :hook (python-mode . (lambda ()
+          		   (require 'lsp-pyright)
+          		   (lsp))))  ; or lsp-mode
    #+END_SRC
 ** evil-mode
    #+BEGIN_SRC emacs-lisp
@@ -430,7 +431,7 @@
 #+END_SRC
 *** Enable so-long mode for minified files to use fundamental mode when opened
 #+BEGIN_SRC emacs-lisp
-(global-so-long-mode 1)
+;;(global-so-long-mode 1)
 #+END_SRC
 * Copy/paste settings
 ** Enable copy/paste in/out of emacs
@@ -447,6 +448,6 @@
    #+END_SRC
 ** env variables
    #+BEGIN_SRC emacs-lisp
-   (when (memq window-system '(mac ns x))
-       (exec-path-from-shell-initialize))
+   ;;(exec-path-from-shell-copy-env 'PATH)
+   (exec-path-from-shell-initialize)
    #+END_SRC

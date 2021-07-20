@@ -110,14 +110,10 @@
 ;; (OPTIONAL) Visualize tabs as a pipe character - "|"
 ;; This will also show trailing characters as they are useful to spot.
 (setq whitespace-style '(face tabs tab-mark trailing))
-;;(custom-set-faces
-;; '(whitespace-tab ((t (:foreground "#636363")))))
-;;(setq whitespace-display-mappings
-;;  '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
-;;(global-whitespace-mode) ; Enable whitespace mode everywhere
 ; END TABS CONFIG
 
 (setq scroll-conservatively 101)
+(org-reload)
 
 (setq mouse-wheel-scroll-amound '(1))
 (setq mouse-wheel-progressive-speed nil)
@@ -275,7 +271,7 @@
    ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
    (setq lsp-keymap-prefix "C-l")
    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
-	  (python-mode . (lambda () (require 'lsp-pyright) (lsp)))
+	  (python-mode . lsp)
 	  (js-mode . lsp)
 	  ;; if you want which-key integration
 	  (lsp-mode . lsp-enable-which-key-integration))
@@ -294,16 +290,20 @@
      :config
  (which-key-mode))
 
- ;; (use-package lsp-pyright
- ;;   :ensure t
- ;;   :hook (python-mode . (lambda ()
- ;;    		   (require 'lsp-pyright)
- ;;    		   (lsp))))  ; or lsp-deferred
+ (use-package lsp-pyright
+    :ensure t
+    :hook (python-mode . (lambda ()
+          	      (require 'lsp-pyright)
+          	      (lsp))))  ; or lsp-mode
 
 ;(require 'evil)
 ;(evil-mode t)
 ;(define-key evil-normal-state-map "gT" 'tabbar-backward)
 ;(define-key evil-normal-state-map "gt" 'tabbar-forward)
+
+(add-hook 'after-init-hook #'global-emojify-mode)
+ (use-package emojify
+:hook (after-init . global-emojify-mode))
 
 (load "~/.emacs.d/plugins/tldr-newsletter.el")
 (load "~/.emacs.d/plugins/apex.el")
@@ -335,6 +335,11 @@
 (bind-key "M-I" 'insert-kbd-macro)
 (bind-key "M-P" 'json-pretty-print)
 
+(setq bidi-paragraph-direction 'left-to-right)
+(setq bidi-inhibit-bpa t)
+
+;;(global-so-long-mode 1)
+
 (setq x-select-enable-clipboard t)
 
 (add-to-list 'load-path "/path/to/auto-package-update")
@@ -342,5 +347,5 @@
 (setq auto-package-update-prompt-before-update t)
 (auto-package-update-at-time "13:00")
 
-(when (memq window-system '(mac ns x))
-    (exec-path-from-shell-initialize))
+;;(exec-path-from-shell-copy-env 'PATH)
+(exec-path-from-shell-initialize)
