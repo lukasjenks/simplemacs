@@ -1,0 +1,49 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/lukas/" . ".emacs.d/")
+ ("/home/" . "lukas/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/mnt/c/Development/workspace/slcore/dev/core/directive/"
+ "/home/lukas/.emacs.d/"
+ "/home/lukas/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "GeneratedForm.html"
+ "settings.org"
+ ".bash_history"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/lukas/.emacs.d/" (24823 3075 539420 500000) "workspace/" "SourceCodePro/" "settings.org" "settings.el" "README.md" "plugins/" "init.el" "emojis/" "elpa/" "eclipse.jdt.ls/" "early-init.el" "auto-save-list/" ".lsp-session-v1" ".last-package-update-day" ".gitignore" ".git/" ".dap-breakpoints" ".cache/" "../" "./")
+
+ ("/home/lukas/" (24823 2963 751996 0) ".vimrc" ".viminfo" ".vim/" ".sudo_as_admin_successful" ".python_history" ".profile" ".nvm/" ".npm/" ".motd_shown" ".m2/" ".local/" ".landscape/" ".gitconfig" ".emacstmp/" ".emacs.d/" ".deno/" ".dbus/" ".config/" ".cache/" ".bash_logout" ".bash_history" ".bashrc" "#!mnt!c!Development!workspace!slcore!gulpfile.js#" "#!mnt!c!Development!workspace!fms_python!arcgis!hpl_gp_uat_resources!geoprocesses!all_attrs_block!CalcBlame.py#" "#!mnt!c!Development!workspace!fms_python!arcgis!DeployHplGp.py#" "#!mnt!c!Development!workspace!fms_dev_utils!fmsbuildswap.py#" "#!mnt!c!Development!workspace!docs!notes!FMS-2998.txt#" "../" "./")
+
+ ("/home/" (24670 4024 850391 200000) "lukas/" "../" "./")
+
+ ("/mnt/" (24670 3927 625801 400000) "c/" "../" "./")
+
+ ("/mnt/c/" (24821 50882 426974 800000) "Windows/" "Web/" "Users/" "temp/" "System Volume Information/" "swapfile.sys" "Software/" "Recovery/" "Python27/" "Projects/" "ProgramData/" "Program Files (x86)/" "Program Files/" "PerfLogs/" "pagefile.sys" "oracle/" "OneDriveTemp/" "msdia80.dll" "Intel/" "hiberfil.sys" "EsriPress/" "DumpStack.log.tmp" "Documents and Settings/" "Development/" "Atlassian/" "app/" "$WinREAgent/" "$Recycle.Bin/" "../" "./")
+
+ ("/mnt/c/Development/" (24821 50881 259822 900000) "workspace-test/" "workspace/" "System Volume Information/" "old-apache-installs/" "nvm/" "nodejs" "misc/" "maven/" "maps/" "JDK/" "hplgptesting/" "drivers/" "apache-tomcat-8.5.12/" "apache-maven-3.0.3/" "$RECYCLE.BIN/" "../" "./")
+
+ ("/mnt/c/Development/workspace/" (24805 63696 116240 200000) "sql_scripts/" "slGeneratedForm.js" "slcore/" "qol_scripts/" "projects/" "originalSql.sql" "old/" "mxd/" "fms_python/" "fms_dev_utils/" "fmsbackup/" "fms/" "docs/" "DMI_Internal_Block_Status.jrxml" "dmiInternalBlockStatusReportController.js" "DmiInternalBlockStatusReport.html" "development_bc/" "BusinessRulesWEYER_PF.java" "BusinessRulesEDFOR.java" "BusinessRulesBase.java" "auditTable.sql" "2901/" "../" "./")
+
+ ("/mnt/c/Development/workspace/slcore/" (24796 48822 918672 800000) "slCore.iml" "resources/" "README.md" "package.json" "node_modules/" "karma.conf.js" "gulpfile.js" "e2e-tests/" "dist/" "dev/" "bower.json" ".vscode/" ".npmignore" ".jshintrc" ".idea/" ".gitignore" ".git/" ".bowerrc" "../" "./")
+
+ ("/mnt/c/Development/workspace/slcore/dev/" (24786 24032 519845 900000) "core/" "bower_components/" "app/" "../" "./")
+
+ ("/mnt/c/Development/workspace/slcore/dev/core/" (24784 46707 286308 500000) "view/" "util/" "slGlobals.js" "slConfig.js" "service/" "model/" "main.js" "init.js" "init-templates.js" "filter/" "external/" "directive/" "core.js" "controller/" "component/" "../" "./")
+
+ ("/mnt/c/Development/workspace/slcore/dev/core/directive/" (24787 26658 954718 600000) "validators/" "util/" "toolbar/" "slRelatedGraphicsTree.js" "slGeneratedForm.js" "RelatedGraphicsTree.html" "notification/" "navigation/" "map/" "location/" "layout/" "GeneratedForm.html" "fields/" "../" "./")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

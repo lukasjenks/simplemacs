@@ -48,6 +48,19 @@
 
 (global-auto-revert-mode)
 
+(setq my-unignored-buffers '("*ielm*" "*scratch*"))
+
+(defun my-ido-ignore-func (name)
+  "Ignore all non-user (a.k.a. *starred*) buffers except those listed in `my-unignored-buffers'."
+  (and (string-match "^\*" name)
+       (not (member name my-unignored-buffers))))
+
+(setq ido-ignore-buffers '("\\` " my-ido-ignore-func))
+
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode t)
+
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
 ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
@@ -203,16 +216,9 @@
 			:box nil)
 
 	 ;; Group tabs by project/directory, and hide some buffer <https://www.emacswiki.org/emacs/TabBarMode#toc15>
+	 (setq my-unignored-buffers '("*foobar*"))
 	 (defun my/tabbar-buffer-groups ()
-	       (cond ((member (buffer-name)
-					 '("*Completions*"
-					       "*scratch*"
-					       "*Messages*"
-					       "*Ediff Registry*"
-					       "*Flycheck error messages*"
-					       "*Local Variables*"
-					       "*Backtrace*"))
-			 (list "#hide"))
+	       (cond ((and (string-match "^\*" (buffer-name)) (not (member (buffer-name) my-unignored-buffers))) (list "#hide"))
 			(t (list (or (cdr (project-current))
 						 (expand-file-name default-directory))))))
 	 (setq tabbar-buffer-groups-function #'my/tabbar-buffer-groups)
@@ -248,6 +254,7 @@
 
 (require 'neotree)
 (global-set-key [f8] 'neotree-toggle)
+(setq inhibit-compacting-font-caches t)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 
 ;;(cond
