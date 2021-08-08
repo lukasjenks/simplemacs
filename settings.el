@@ -84,12 +84,10 @@
 
 (xterm-mouse-mode t)
 
-(org-indent-mode 1)
-
+;;(org-indent-mode 1)
 ; START TABS CONFIG
 ;; Create a variable for our preferred tab width
 (setq custom-tab-width 4)
-(setq c-basic-offset 4)
 
 ;; Two callable functions for enabling/disabling tabs in Emacs
 (defun disable-tabs () (setq indent-tabs-mode nil))
@@ -101,8 +99,8 @@
 ;; Hooks to Enable Tabs
 (add-hook 'prog-mode-hook 'enable-tabs)
 ;; Hooks to Disable Tabs
-(add-hook 'lisp-mode-hook 'disable-tabs)
-(add-hook 'emacs-lisp-mode-hook 'disable-tabs)
+;; (add-hook 'lisp-mode-hook 'disable-tabs)
+; ;(add-hook 'emacs-lisp-mode-hook 'disable-tabs)
 
 ;; Language-Specific Tweaks
 (setq-default python-indent-offset custom-tab-width) ;; Python
@@ -117,13 +115,13 @@
 
 ;; (OPTIONAL) Shift width for evil-mode users
 ;; For the vim-like motions of ">>" and "<<".
-(setq-default evil-shift-width custom-tab-width)
-
-;; WARNING: This will change your life
-;; (OPTIONAL) Visualize tabs as a pipe character - "|"
-;; This will also show trailing characters as they are useful to spot.
-(setq whitespace-style '(face tabs tab-mark trailing))
+;; (setq-default evil-shift-width custom-tab-width)
 ; END TABS CONFIG
+
+(require 'indent-guide)
+(indent-guide-global-mode)
+(setq indent-guide-recursive t)
+(setq indent-guide-char "|")
 
 (setq scroll-conservatively 101)
 (org-reload)
@@ -280,12 +278,13 @@
    :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
 	  (python-mode . lsp)
 	  (js-mode . lsp)
+	  (go-mode . lsp)
 	  ;; if you want which-key integration
 	  (lsp-mode . lsp-enable-which-key-integration))
    :commands lsp)
 
  ;; optionally
- (use-package lsp-ui :commands lsp-ui-mode)
+ ;;(use-package lsp-ui :commands lsp-ui-mode)
  ;; if you are helm user
  (use-package helm-lsp :commands helm-lsp-workspace-symbol)
  ;; optionally if you want to use debugger
@@ -300,8 +299,8 @@
  (use-package lsp-pyright
     :ensure t
     :hook (python-mode . (lambda ()
-          	      (require 'lsp-pyright)
-          	      (lsp))))  ; or lsp-mode
+		      (require 'lsp-pyright)
+		      (lsp))))  ; or lsp-mode
 
 ;(require 'evil)
 ;(evil-mode t)
