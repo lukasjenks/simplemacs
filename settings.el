@@ -117,11 +117,8 @@
 ;; For the vim-like motions of ">>" and "<<".
 ;; (setq-default evil-shift-width custom-tab-width)
 ; END TABS CONFIG
-
-(require 'indent-guide)
-(indent-guide-global-mode)
-(setq indent-guide-recursive t)
-(setq indent-guide-char "|")
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(setq highlight-indent-guides-method 'character)
 
 (setq scroll-conservatively 101)
 (org-reload)

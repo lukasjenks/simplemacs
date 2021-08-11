@@ -155,11 +155,8 @@
      ;; For the vim-like motions of ">>" and "<<".
      ;; (setq-default evil-shift-width custom-tab-width)
      ; END TABS CONFIG
-     
-     (require 'indent-guide)
-     (indent-guide-global-mode)
-     (setq indent-guide-recursive t)
-     (setq indent-guide-char "|")
+     (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+     (setq highlight-indent-guides-method 'character)
    #+END_SRC
 * Scrolling settings
 ** Move one line when cursor exits view
