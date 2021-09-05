@@ -50,6 +50,13 @@ To do this, execute the following in the terminal:
 
 `git clone https://github.com/lukasjenks/emacsconfig.git .emacs.d`
 
+#### First Run
+When running the distro for the first time, you may receive certain prompts, such as whether to load and mark the lisp code providing the configured theme as safe. Simply enter "y" when these prompts appear. Then execute the following for the best experience:
+
+`M-x all-the-icons-install`
+
+`M-x auto-package-update-now`
+
 ## Fonts
 In this specific configuration, I use the font SourceCodePro-Regular,
 which is included in this repository. To install the font, execute
