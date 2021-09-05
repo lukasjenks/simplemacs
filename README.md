@@ -1,4 +1,4 @@
-# Lukas' emacs config
+# Simplemacs Emacs Distro
 
 ## Installation
 
