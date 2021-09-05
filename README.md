@@ -3,7 +3,7 @@
 ## Summary
 
 #### Overview
-Simplemacs is designed to be straightforward and simplistic, while at the same time incorporating the functionality and design of modern code editors with rich intellisense, project tree navigation, and tab systems like those found in VS Code, for example. Rather than clinging to old design patterns like other emacs distros (e.g. the very "emacsy" package helm instead of embracing a modern tab bar), it adopts and implements these modern patterns programmers come to expect while still leveraging the extremely unique advantages emacs provides. 
+Simplemacs is designed to be straightforward and simplistic, while at the same time incorporating the functionality and design of modern code editors with rich intellisense, project tree navigation, and tab systems like those found in VS Code, for example. Rather than clinging to old design patterns like other emacs distros (e.g. using the very "emacsy" package helm instead of embracing a modern tab bar/source tree view sidebar model), it adopts and implements these modern patterns programmers have come to expect from a modern editor, while still leveraging the extremely unique advantages emacs provides. 
 
 ![alt](https://github.com/lukasjenks/simplemacs/blob/master/docs/simplemacs.png)
 
