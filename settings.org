@@ -87,9 +87,10 @@
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
-   (cond
-   ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
-   ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
+	(cond
+	((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
+	((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t))
+	((string-equal system-type "darwin") (global-display-line-numbers-mode t)))
    #+END_SRC
 ** Enable highlighting line numbers globally
    #+BEGIN_SRC emacs-lisp
