@@ -1,0 +1,2 @@
+;;; Generated package description from grammarly.el  -*- no-byte-compile: t -*-
+(define-package "grammarly" "20210219.1713" "Grammarly API interface" '((emacs "24.4") (s "1.12.0") (request "0.3.0") (websocket "1.6")) :commit "e0ae37f23a34ff0b7959963314410f30d75dddb1" :authors '(("Shen, Jen-Chieh" . "jcs090218@gmail.com")) :maintainer '("Shen, Jen-Chieh" . "jcs090218@gmail.com") :url "https://github.com/emacs-grammarly/grammarly")

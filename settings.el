@@ -35,9 +35,6 @@
       (save-excursion
 	(end-of-line)
 	(hs-toggle-hiding)))
-;; Set M-p key cmd to toggle-fold (collapse function or block)
-(global-set-key (kbd "M-p") 'hide-fold)
-(global-set-key (kbd "M-o") 'show-fold)
 
 (use-package frame
 :ensure nil
@@ -63,7 +60,8 @@
 
 (cond
 ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
-((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t)))
+((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t))
+((string-equal system-type "darwin") (global-display-line-numbers-mode t)))
 
 ;; highlight line with the cursor, preserving the colours.
 (global-hl-line-mode 1)
@@ -189,9 +187,7 @@
 	 (customize-set-variable 'tabbar-use-images nil)
 	 (tabbar-mode 1)
 
-	 ;; My preferred keys
-	 (global-set-key (kbd "M-j") 'tabbar-backward)
-	 (global-set-key (kbd "M-k") 'tabbar-forward)
+
 
 	 ;; Colors
 	 (set-face-attribute 'tabbar-default nil
@@ -338,6 +334,18 @@
 (bind-key "M-I" 'insert-kbd-macro)
 (bind-key "M-P" 'json-pretty-print)
 
+;; My preferred keys
+(global-set-key (kbd "M-j") 'tabbar-backward)
+(global-set-key (kbd "M-k") 'tabbar-forward)
+
+;; Only remap if in shell major mode
+(eval-after-load 'shell
+     '(bind-key "C-l" 'comint-clear-buffer))
+
+;; Set M-p key cmd to toggle-fold (collapse function or block)
+(global-set-key (kbd "M-p") 'hide-fold)
+(global-set-key (kbd "M-o") 'show-fold)
+
 (setq bidi-paragraph-direction 'left-to-right)
 (setq bidi-inhibit-bpa t)
 
@@ -352,3 +360,9 @@
 
 ;;(exec-path-from-shell-copy-env 'PATH)
 (exec-path-from-shell-initialize)
+
+(if (string-equal system-type "darwin")
+     (progn
+(setq mac-control-modifier 'super
+      mac-command-modifier 'control
+      mac-pass-control-to-system nil)))

@@ -52,9 +52,6 @@
 	 (save-excursion
 	   (end-of-line)
 	   (hs-toggle-hiding)))
-   ;; Set M-p key cmd to toggle-fold (collapse function or block)
-   (global-set-key (kbd "M-p") 'hide-fold)
-   (global-set-key (kbd "M-o") 'show-fold)
    #+END_SRC
 ** Frame package configuration
    #+BEGIN_SRC emacs-lisp
@@ -248,9 +245,7 @@
 		  (customize-set-variable 'tabbar-use-images nil)
 		  (tabbar-mode 1)
 
-		  ;; My preferred keys
-		  (global-set-key (kbd "M-j") 'tabbar-backward)
-		  (global-set-key (kbd "M-k") 'tabbar-forward)
+
 
 		  ;; Colors
 		  (set-face-attribute 'tabbar-default nil
@@ -428,17 +423,35 @@
    (bind-key "M-I" 'insert-kbd-macro)
    (bind-key "M-P" 'json-pretty-print)
    #+END_SRC
+** Set tabbar key bindings
+   #+BEGIN_SRC emacs-lisp
+   ;; My preferred keys
+   (global-set-key (kbd "M-j") 'tabbar-backward)
+   (global-set-key (kbd "M-k") 'tabbar-forward)
+   #+END_SRC
+** Set shell mode key bindings
+   #+BEGIN_SRC emacs-lisp
+   ;; Only remap if in shell major mode
+   (eval-after-load 'shell
+	'(bind-key "C-l" 'comint-clear-buffer))
+   #+END_SRC
+** Set code folding  key bindings
+   #+BEGIN_SRC emacs-lisp
+   ;; Set M-p key cmd to toggle-fold (collapse function or block)
+   (global-set-key (kbd "M-p") 'hide-fold)
+   (global-set-key (kbd "M-o") 'show-fold)
+   #+END_SRC
 * Performance Settings
 ** Optimize for very long lines
 *** Eliminate constant scanning of extremely long lines performed by emacs by default
-#+BEGIN_SRC emacs-lisp
-(setq bidi-paragraph-direction 'left-to-right)
-(setq bidi-inhibit-bpa t)
-#+END_SRC
+  #+BEGIN_SRC emacs-lisp
+  (setq bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t)
+  #+END_SRC
 *** Enable so-long mode for minified files to use fundamental mode when opened
-#+BEGIN_SRC emacs-lisp
-;;(global-so-long-mode 1)
-#+END_SRC
+  #+BEGIN_SRC emacs-lisp
+  ;;(global-so-long-mode 1)
+  #+END_SRC
 * Copy/paste settings
 ** Enable copy/paste in/out of emacs
    #+BEGIN_SRC emacs-lisp
@@ -457,3 +470,13 @@
    ;;(exec-path-from-shell-copy-env 'PATH)
    (exec-path-from-shell-initialize)
    #+END_SRC
+** mac settings
+   #+BEGIN_SRC emacs-lisp
+     (if (string-equal system-type "darwin")
+	  (progn
+     (setq mac-control-modifier 'super
+	   mac-command-modifier 'control
+	   mac-pass-control-to-system nil)))
+   #+END_SRC
+
+   

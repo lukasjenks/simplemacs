@@ -1,0 +1,2 @@
+;;; Generated package description from leetcode.el  -*- no-byte-compile: t -*-
+(define-package "leetcode" "20211005.1331" "An leetcode client" '((emacs "26") (dash "2.16.0") (graphql "0.1.1") (spinner "1.7.3") (aio "1.0") (log4e "0.3.3")) :commit "e278b099173dced55e6e39f9924e90899542ebf1" :authors '(("Wang Kai" . "kaiwkx@gmail.com")) :maintainer '("Wang Kai" . "kaiwkx@gmail.com") :keywords '("extensions" "tools") :url "https://github.com/kaiwk/leetcode.el")
