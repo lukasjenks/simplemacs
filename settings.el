@@ -1,8 +1,10 @@
 (when (>= emacs-major-version 24)
   (require 'package)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-  (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
-  (package-initialize))
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/") t)
+  (add-to-list 'package-archives '("tromey" . "http://tromey.com/elpa/") t)
+(package-initialize))
 
 (setq initial-major-mode 'text-mode)
 
@@ -272,6 +274,7 @@
 	  (python-mode . lsp)
 	  (js-mode . lsp)
 	  (go-mode . lsp)
+	  (lisp-mode . lsp)
 	  ;; if you want which-key integration
 	  (lsp-mode . lsp-enable-which-key-integration))
    :commands lsp)
@@ -294,6 +297,11 @@
     :hook (python-mode . (lambda ()
 		      (require 'lsp-pyright)
 		      (lsp))))  ; or lsp-mode
+
+ (lsp-register-client
+  (make-lsp-client :new-connection (lsp-stdio-connection "sbcl")
+		   :activation-fn (lsp-activate-on "lisp")
+		   :server-id 'sbcl))
 
 ;(require 'evil)
 ;(evil-mode t)

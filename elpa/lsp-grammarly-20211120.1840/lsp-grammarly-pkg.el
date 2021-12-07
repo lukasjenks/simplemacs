@@ -1,0 +1,2 @@
+;;; Generated package description from lsp-grammarly.el  -*- no-byte-compile: t -*-
+(define-package "lsp-grammarly" "20211120.1840" "LSP Clients for Grammarly" '((emacs "27.1") (lsp-mode "6.1") (grammarly "0.3.0") (request "0.3.0") (s "1.12.0") (ht "2.3")) :commit "02c1d83c6e7ef703ce7426f8eff2c3fc7733cf72" :authors '(("Shen, Jen-Chieh" . "jcs090218@gmail.com")) :maintainer '("Shen, Jen-Chieh" . "jcs090218@gmail.com") :url "https://github.com/emacs-grammarly/lsp-grammarly")
