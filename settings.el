@@ -373,4 +373,6 @@
      (progn
 (setq mac-control-modifier 'super
       mac-command-modifier 'control
+      mac-right-option-modifer 'meta
+      mac-option-modifier 'meta
       mac-pass-control-to-system nil)))

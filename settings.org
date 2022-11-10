@@ -86,10 +86,10 @@
 * Configure line number functionality
 ** Enable display-line-numbers-mode globally
    #+BEGIN_SRC emacs-lisp
-	(cond
-	((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
-	((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t))
-	((string-equal system-type "darwin") (global-display-line-numbers-mode t)))
+	  (cond
+	  ((string-equal system-type "windows-nt") (global-display-line-numbers-mode t))
+	  ((string-equal system-type "gnu/linux") (global-display-line-numbers-mode t))
+	  ((string-equal system-type "darwin") (global-display-line-numbers-mode t)))
    #+END_SRC
 ** Enable highlighting line numbers globally
    #+BEGIN_SRC emacs-lisp
@@ -479,11 +479,14 @@
    (exec-path-from-shell-initialize)
    #+END_SRC
 ** mac settings
+*** Configure to work with option as meta, command as control, and control as super.
    #+BEGIN_SRC emacs-lisp
      (if (string-equal system-type "darwin")
 	  (progn
      (setq mac-control-modifier 'super
 	   mac-command-modifier 'control
+	   mac-right-option-modifer 'meta
+	   mac-option-modifier 'meta
 	   mac-pass-control-to-system nil)))
    #+END_SRC
 
